@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
 import useBuyer from '../../hooks/useBuyer/useBuyer';
+import useSeller from '../../hooks/useSeller/useSeller';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 
@@ -10,7 +11,8 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isBuyer] = useBuyer(user?.email);
     const [isAdmin] = useAdmin(user?.email);
-    // console.log(isAdmin);
+    const [isSeller] = useSeller(user?.email);
+    // console.log(isSeller);
 
     return (
         <div>
@@ -31,6 +33,12 @@ const DashboardLayout = () => {
                                 <li ><Link to='/dashboard/allsellers' className='btn btn-outline '>All Sellers</Link></li>
                                 <li ><Link to='/dashboard/allbuyers' className='btn btn-outline '>All Buyers</Link></li>
                                 <li ><Link to='/dashboard/reported' className='btn btn-outline '>Reported Items</Link></li>
+                            </>
+                        }
+                        {
+                            isSeller && <>
+                                <li ><Link to='/dashboard/addproduct' className='btn btn-outline '>Add a Product</Link></li>
+                                <li ><Link to='/dashboard/myproducts' className='btn btn-outline '>My Products</Link></li>
                             </>
                         }
                     </ul>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Orders = ({ booked }) => {
     // console.log(booked);
 
-    const { name, img, product, price } = booked;
+    const { img, product, price } = booked;
 
     return (
         <div className="card bg-base-100 shadow-xl">

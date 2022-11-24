@@ -24,7 +24,7 @@ const Booking = () => {
     }
     // console.log(product);
 
-    const { name, resale_price, img } = product;
+    const { model, resale_price, img } = product;
 
     const handleBooking = (data) => {
 
@@ -78,7 +78,7 @@ const Booking = () => {
                             <span className="label-text text-base font-semibold">Product Name:</span>
                         </label>
                         <input type="text"
-                            defaultValue={name}
+                            defaultValue={model}
                             {...register("product", {
                                 required: 'product is Required'
                             })}

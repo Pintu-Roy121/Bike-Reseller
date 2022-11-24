@@ -1,16 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import Loading from '../../../Shared/Loading/Loading';
+import Product from '../../Product/Product';
 
-const Reported = () => {
-    const [reported, setReported] = useState([]);
+const MyProducts = () => {
+    const { user, loading } = useContext(AuthContext);
+    const [products, setProducts] = useState([]);
+
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch(`http://localhost:5000/allproducts/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                setReported(data);
+                setProducts(data);
             })
-    }, [])
-    console.log(reported);
+
+    }, [user.email])
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -27,7 +37,7 @@ const Reported = () => {
                     </thead>
                     <tbody>
                         {
-                            reported.map((product, i) =>
+                            products.map((product, i) =>
                                 <tr
                                     key={product._id}
                                 >
@@ -35,11 +45,11 @@ const Reported = () => {
                                     <th>
                                         <div className="avatar">
                                             <div className="w-24 rounded-xl">
-                                                <img src={product.img} alt='/' />
+                                                <img className='object-contain' src={product.img} alt='/' />
                                             </div>
                                         </div>
                                     </th>
-                                    <td>{product.name}</td>
+                                    <td>{product.model}</td>
                                     <td>{product.seller_name}</td>
                                     <td>{product.resale_price} $</td>
                                     <td>
@@ -54,4 +64,4 @@ const Reported = () => {
     );
 };
 
-export default Reported;
+export default MyProducts;

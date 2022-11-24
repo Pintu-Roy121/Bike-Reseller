@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import Main from "../../Layout/Main/Main";
 import AddProduct from "../../pages/AddProduct/AddProduct";
+import AllProduct from "../../pages/AllProduct/AllProduct";
 import AllProducts from "../../pages/AllProducts/AllProducts";
 import Blog from "../../pages/Blog/Blog";
 import Booking from "../../pages/Booking/Booking";
@@ -9,6 +10,7 @@ import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
 import Reported from "../../pages/Dashboard/Reported/Reported";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login/Login";
@@ -38,13 +40,13 @@ export const router = createBrowserRouter([
                 element: <Signup></Signup>
             },
             {
+                path: '/products',
+                element: <AllProduct></AllProduct>
+            },
+            {
                 path: '/allproducts/:id',
                 element: <AllProducts></AllProducts>,
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
-            },
-            {
-                path: '/addproduct',
-                element: <AddProduct></AddProduct>
             },
             {
                 path: '/booking/:id',
@@ -76,6 +78,14 @@ export const router = createBrowserRouter([
                 path: '/dashboard/reported',
                 element: <Reported></Reported>
             },
+            {
+                path: '/dashboard/addproduct',
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <MyProducts></MyProducts>
+            }
         ]
     },
     {
