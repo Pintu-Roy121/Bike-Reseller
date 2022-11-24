@@ -8,6 +8,7 @@ import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login/Login";
 import Signup from "../../pages/Login/Signup/Signup";
 import PageNotFound from "../../Shared/PageNotFound/PageNotFound";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/booking/:id',
-                element: <Booking></Booking>
+                element: <PrivateRoutes><Booking></Booking></PrivateRoutes>
             }
         ]
     },

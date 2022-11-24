@@ -16,7 +16,13 @@ const Signup = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value
-        // const role = form.role.value;
+        const role = form.role.value;
+
+        const user = {
+            name,
+            email,
+            role
+        }
 
         createUser(email, password)
             .then(result => {
@@ -26,7 +32,7 @@ const Signup = () => {
                 }
                 updateUser(profile)
                     .then(() => {
-                        console.log(result.user);
+                        saveUser(user)
                         navigate('/')
                         form.reset(' ')
                     })
@@ -48,6 +54,22 @@ const Signup = () => {
             })
             .catch(error => {
                 setError(error.message)
+            })
+    }
+
+    const saveUser = (user) => {
+        console.log(user);
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // getUserToken(email)
             })
     }
 
@@ -77,8 +99,8 @@ const Signup = () => {
                 <div className=' my-5'>
                     <span className="label-text text-base font-semibold">Select Role:</span>
                     <select name='role' className="select text-lg select-info w-full" defaultValue='Buyer'>
-                        <option >Buyer</option>
-                        <option>Seller</option>
+                        <option >user</option>
+                        <option>seller</option>
                     </select>
                 </div>
                 {
