@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import Loading from '../../Shared/Loading/Loading';
 import Product from '../Product/Product';
 
 const AllProducts = () => {
+    const { loading } = useContext(AuthContext);
     const products = useLoaderData();
+
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='w-11/12 mx-auto my-10'>

@@ -99,7 +99,7 @@ const Signup = () => {
                 <div className=' my-5'>
                     <span className="label-text text-base font-semibold">Select Role:</span>
                     <select name='role' className="select text-lg select-info w-full" defaultValue='Buyer'>
-                        <option >user</option>
+                        <option>buyer</option>
                         <option>seller</option>
                     </select>
                 </div>
