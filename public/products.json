@@ -1,0 +1,110 @@
+[
+    {
+        "category_id": "637e868f80a8e5e30f743c0f",
+        "brand_name": "Yamaha",
+        "name": "Yamaha MT 15 V2",
+        "img": "https://i.ibb.co/chDrFzy/2022-Yamaha-MT-15-1800-kms-driven-in-NH-24-VB201705171774173-ak-LWBP530039160-1665327102-lg.jpg",
+        "location": "Dhaka",
+        "resale_price": "1.10000",
+        "original_price": "1,65000",
+        "yearsof_use": 2,
+        "date": "Nov-24",
+        "seller_name": "Pintu Roy"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c0f",
+        "brand_name": "Yamaha",
+        "name": "Yamaha FZ-FI Version 3.0",
+        "img": "https://i.ibb.co/kmdGQKB/1571567041-received-474167936528793.jpg",
+        "location": "Dhaka",
+        "resale_price": "1,15000",
+        "original_price": "1,45000",
+        "yearsof_use": 1.5,
+        "date": "Nov-25",
+        "seller_name": "Mr Roy"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c0f",
+        "brand_name": "Yamaha",
+        "name": "Yamaha FZS-FI V3",
+        "img": "https://i.ibb.co/L1pxsf2/IMG-20210204-130002-min-scaled.jpg",
+        "location": "Dhaka",
+        "resale_price": "95,000",
+        "original_price": "1,22000",
+        "yearsof_use": 2.4,
+        "date": "Nov-20",
+        "seller_name": "Tom Jone"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c10",
+        "brand_name": "Honda",
+        "name": "Honda SP 125",
+        "img": "https://i.ibb.co/h81JQ5P/1583038721-IMG-20200301-105530-741.jpg",
+        "location": "Chittagong",
+        "resale_price": "60,000",
+        "original_price": "85,000",
+        "yearsof_use": 2,
+        "date": "Nov-22",
+        "seller_name": "Aminul Islam"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c10",
+        "brand_name": "Honda",
+        "name": "Honda Shine",
+        "img": "https://i.ibb.co/Zz2GjbQ/1575092137-IMG-20191126-090338.jpg",
+        "location": "Mirpu-2",
+        "resale_price": "65,000",
+        "original_price": "80,000",
+        "yearsof_use": 1,
+        "date": "Nov-25",
+        "seller_name": "Sujon Mostofa"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c10",
+        "brand_name": "Honda",
+        "name": "Honda Unicorn",
+        "img": "https://i.ibb.co/6F6mqqY/0194304-honda-cb-shine-sp-1247-cc-motorbike-550.jpg",
+        "location": "Gulsan-2",
+        "resale_price": "80,000",
+        "original_price": "1,05000",
+        "yearsof_use": 2,
+        "date": "Nov-25",
+        "seller_name": "Mursalin Hasan"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c11",
+        "brand_name": "Suzuki",
+        "name": "Suzuki Gixxer SF",
+        "img": "https://i.ibb.co/PFQGn9P/suzuki-gixxer-sf-250-1602411292.jpg",
+        "location": "Khilket",
+        "resale_price": "1,20000",
+        "original_price": "1,40000",
+        "yearsof_use": 2,
+        "date": "Nov-05",
+        "seller_name": "Nirob Hasan"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c11",
+        "brand_name": "Suzuki",
+        "name": "Suzuki Gixxer",
+        "img": "https://i.ibb.co/4shZNZY/1537888370-20180925-100306.jpg",
+        "location": "Badda",
+        "resale_price": "1,00000",
+        "original_price": "1,34000",
+        "yearsof_use": 2,
+        "date": "Nov-05",
+        "seller_name": "Rakib Kabir"
+    },
+    {
+        "category_id": "637e868f80a8e5e30f743c11",
+        "brand_name": "Suzuki",
+        "name": "Suzuki Gixxer SF 250",
+        "img": "https://i.ibb.co/4twh3Wy/1551164202-IMG-3751.jpg",
+        "location": "Mirput-10",
+        "resale_price": "1,50000",
+        "original_price": "1,92000",
+        "yearsof_use": 2,
+        "date": "Nov-05",
+        "seller_name": "Rakib Kabir"
+    }
+]

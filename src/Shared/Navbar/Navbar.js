@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../contexts/AuthProvider';
 
@@ -30,7 +30,6 @@ const Navbar = () => {
                     <>
                         <Link>{user?.email}</Link>
                         <Link>{user?.displayName}</Link>
-                        {/* <li>{user?.displayName}</li> */}
                         <Link onClick={handleLogout} to='/login'>LogOut</Link>
                     </>
                     :

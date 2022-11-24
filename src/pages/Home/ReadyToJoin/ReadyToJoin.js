@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ReadyToJoin = () => {
     return (
@@ -8,7 +9,9 @@ const ReadyToJoin = () => {
                 <p className='text-white text-justify w-4/5 my-5'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
             </div>
             <div className='w-1/2 flex justify-end'>
-                <button className='btn bg-white text-black'>Register Now</button>
+                <Link to='/signup'>
+                    <button className='btn bg-white text-black'>Register Now</button>
+                </Link>
             </div>
         </div>
     );
