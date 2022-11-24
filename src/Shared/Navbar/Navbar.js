@@ -50,7 +50,7 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link>
+                    <Link to='/'>
                         <img className='w-16' src={logo} alt="" />
                     </Link>
                 </div>

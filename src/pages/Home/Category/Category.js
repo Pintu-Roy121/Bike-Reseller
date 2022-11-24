@@ -9,8 +9,7 @@ const Category = ({ category }) => {
                 <img src={img} alt="Shoes" className="rounded-xl w-36" />
             </figure>
 
-            <h2 className="text-center text-2xl font-black">{brand}</h2>
-            <h2 className="text-center text-2xl font-black">{_id}</h2>
+            <h2 className="text-center uppercase text-2xl font-black">{brand}</h2>
             <div className="card-body items-center text-center">
                 <div className="card-actions">
                     <Link to={`/allproducts/${_id}`}>

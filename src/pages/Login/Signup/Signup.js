@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Signup = () => {
+    const { LoginWithGoogle } = useContext(AuthContext);
     const { createUser, updateUser } = useContext(AuthContext)
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -37,6 +38,17 @@ const Signup = () => {
                 setError(error.message);
             })
 
+    }
+
+    const handleGoogleLogin = () => {
+        LoginWithGoogle()
+            .then(result => {
+                navigate('/')
+                toast.success("Login in successful")
+            })
+            .catch(error => {
+                setError(error.message)
+            })
     }
 
 
@@ -80,7 +92,7 @@ const Signup = () => {
             <div className='w-3/4 mx-auto'>
                 <p>Already Have an Account? <Link to='/login' className='text-info hover:text-sky-600 duration-200 underline'>Log in</Link> </p>
                 <div className="divider">OR</div>
-                <button className='btn text-base btn-outline btn-info w-full text-white'>Continue With Google</button>
+                <button onClick={handleGoogleLogin} className='btn text-base btn-outline btn-info w-full text-white'>Continue With Google</button>
             </div>
 
         </div >

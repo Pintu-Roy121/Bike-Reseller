@@ -3,6 +3,7 @@ import Main from "../../Layout/Main/Main";
 import AddProduct from "../../pages/AddProduct/AddProduct";
 import AllProducts from "../../pages/AllProducts/AllProducts";
 import Blog from "../../pages/Blog/Blog";
+import Booking from "../../pages/Booking/Booking";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login/Login";
 import Signup from "../../pages/Login/Signup/Signup";
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: '/addproduct',
                 element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/booking/:id',
+                element: <Booking></Booking>
             }
         ]
     },
