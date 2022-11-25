@@ -18,14 +18,14 @@ const DashboardLayout = () => {
             <Navbar></Navbar>
             <div className="drawer drawer-mobile">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content bg-slate-100 p-8">
+                <div className="drawer-content bg-slate-100">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side bg-slate-200">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 gap-3 rounded-lg text-xl font-semibold ">
                         {
-                            isBuyer && <li ><Link to='/dashboard/myorders' className='btn  btn-outline '>My orders</Link></li>
+                            isBuyer && <li ><Link to='/dashboard/myorders' className='btn btn-info btn-outline'>My orders</Link></li>
                         }
                         {
                             isAdmin && <>
@@ -43,10 +43,10 @@ const DashboardLayout = () => {
                     </ul>
 
                 </div>
-            </div>
+            </div >
             <Footer></Footer>
 
-        </div>
+        </div >
     );
 };
 

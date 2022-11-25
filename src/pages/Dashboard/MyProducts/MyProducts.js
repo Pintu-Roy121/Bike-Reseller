@@ -1,28 +1,52 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
 
 const MyProducts = () => {
     const { user, loading } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
+    const [refresh, setRefresh] = useState(false)
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allproducts/${user?.email}`)
+        fetch(`http://localhost:5000/allproducts/${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
             })
 
-    }, [user.email])
+    }, [user.email, refresh])
 
     if (loading) {
         return <Loading></Loading>
     }
 
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/delete/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    Swal.fire(
+                        'Success!',
+                        'Product Deleted Successfully!',
+                        'success'
+                    )
+                    setRefresh(!refresh)
+                }
+            })
+    }
+
     return (
-        <div>
+        <div className='my-5'>
             <div className="overflow-x-auto">
+                <h1 className='text-2xl mb-5 underline font-bold text-center'>Total Products: {products.length}</h1>
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -52,7 +76,7 @@ const MyProducts = () => {
                                     <td>{product.seller_name}</td>
                                     <td>{product.resale_price} $</td>
                                     <td>
-                                        <button className='btn btn-sm btn-error'>Delete Product</button>
+                                        <button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-error'>Delete Product</button>
                                     </td>
                                 </tr>)
                         }

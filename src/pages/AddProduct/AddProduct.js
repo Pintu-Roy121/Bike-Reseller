@@ -3,10 +3,11 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddProduct = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate()
 
@@ -27,6 +28,7 @@ const AddProduct = () => {
         const formData = new FormData();
         const image = data.image[0]
         formData.append('image', image)
+
         // set time when add the product....................................
         let time_ob = new Date();
         let hours = time_ob.getHours();
@@ -76,7 +78,11 @@ const AddProduct = () => {
                         .then(data => {
                             if (data.acknowledged) {
                                 navigate('/dashboard/myproducts')
-                                toast.success('Product add Successful')
+                                Swal.fire(
+                                    'Success!',
+                                    'Product add Successful!',
+                                    'success'
+                                )
                             }
                         })
                 }
@@ -84,10 +90,10 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='bg-slate-200 p-24 rounded-xl'>
-            <div className="text-3xl font-semibold text-center underline">Add A Product</div>
+        <div className='w-11/12 mx-auto my-8 bg-slate-200 p-16 rounded-xl'>
+            <div className="text-3xl font-bold text-center underline">Add A Product</div>
             <form onSubmit={handleSubmit(AddProduct)}>
-                <div className='grid grid-cols-2 gap-5 font-semibold'>
+                <div className='grid grid-cols-2 gap-2 font-semibold'>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text text-base font-semibold">Brand:</span>
@@ -106,7 +112,7 @@ const AddProduct = () => {
                             <option>RUNNER</option>
                             <option>Others</option>
                         </select>
-                        {/* {errors.email && <p className='text-red-600'>{errors.email?.message}</p>} */}
+                        {errors.brand_name && <p className='text-red-600'>{errors.brand_name?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -117,7 +123,7 @@ const AddProduct = () => {
                                 required: 'model is Required'
                             })}
                             className="input input-bordered input-info w-full" />
-                        {/* {errors.email && <p className='text-red-600'>{errors.email?.message}</p>} */}
+                        {errors.model && <p className='text-red-600'>{errors.model?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -128,7 +134,7 @@ const AddProduct = () => {
                                 required: 'name is Required'
                             })}
                             className="input input-bordered input-info w-full" />
-                        {/* {errors.email && <p className='text-red-600'>{errors.email?.message}</p>} */}
+                        {errors.name && <p className='text-red-600'>{errors.name?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -139,7 +145,7 @@ const AddProduct = () => {
                                 required: 'resale_price is Required'
                             })}
                             className="input input-bordered input-info w-full" />
-                        {/* product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase  */}
+                        {errors.resale_price && <p className='text-red-600'>{errors.resale_price?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -150,6 +156,7 @@ const AddProduct = () => {
                                 required: 'original_price is Required'
                             })}
                             className="input input-bordered input-info w-full" />
+                        {errors.original_price && <p className='text-red-600'>{errors.original_price?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -160,6 +167,7 @@ const AddProduct = () => {
                                 required: 'yearsof_use is Required'
                             })}
                             className="input input-bordered input-info w-full" />
+                        {errors.yearsof_use && <p className='text-red-600'>{errors.yearsof_use?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -185,6 +193,7 @@ const AddProduct = () => {
                             })}
                             placeholder="+880"
                             className="input input-bordered input-info w-full" />
+                        {errors.phone && <p className='text-red-600'>{errors.phone?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -196,7 +205,7 @@ const AddProduct = () => {
                             })}
                             placeholder="Your Location"
                             className="input input-bordered input-info w-full" />
-                        {/* {errors.phone && <p className='text-red-600'>{errors.phone?.message}</p>} */}
+                        {errors.location && <p className='text-red-600'>{errors.location?.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -208,7 +217,7 @@ const AddProduct = () => {
                             })}
                             placeholder="Your Location"
                             className="input input-bordered input-info w-full" />
-                        {/* {errors.phone && <p className='text-red-600'>{errors.phone?.message}</p>} */}
+                        {errors.years && <p className='text-red-600'>{errors.years?.message}</p>}
                     </div>
                 </div>
                 <div className="form-control w-full">
@@ -217,24 +226,24 @@ const AddProduct = () => {
                     </label>
                     <textarea
                         {...register("description", {
-                            required: 'location is Required'
+                            required: 'description is Required'
                         })}
                         className="textarea textarea-info" placeholder="Description"></textarea>
+                    {errors.description && <p className='text-red-600'>{errors.description?.message}</p>}
                 </div>
-                <div className='border rounded-lg flex justify-center items-center border-info my-5'>
+                <div className='border rounded-lg py-2 flex justify-center items-center border-info my-5'>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-semibold">Photo</span>
+                            <span className="label-text text-lg font-semibold my-3">Upload Product Photo:</span>
                         </label>
                         <input type="file"
                             {...register('image', {
                                 required: 'image is Required'
                             })} className="input bg-transparent" />
-                        {/* {errors.img && <p className='text-red-600'>{errors.image?.message}</p>} */}
+                        {errors.image && <p className='text-red-600'>{errors.image?.message}</p>}
                     </div>
                 </div>
-
-                <input type="submit" value='submit' className='btn btn-info w-full my-5' />
+                <input type="submit" value='submit' className='btn btn-info w-full' />
             </form>
         </div>
     );

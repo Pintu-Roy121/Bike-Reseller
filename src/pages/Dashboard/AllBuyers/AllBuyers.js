@@ -6,7 +6,11 @@ const AllBuyers = () => {
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users/buyers')
+        fetch('http://localhost:5000/users/buyers', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setAllBuyers(data);

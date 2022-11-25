@@ -15,7 +15,8 @@ const Navbar = () => {
         Logout()
             .then(() => {
                 toast.success('Logout Successful')
-                navigate('/login')
+                navigate('/login');
+                localStorage.removeItem('accessToken')
             })
             .catch(error => {
                 console.log(error);

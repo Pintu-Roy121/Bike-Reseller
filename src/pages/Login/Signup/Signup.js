@@ -2,12 +2,19 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useToken from '../../../hooks/useToken/useToken';
 
 const Signup = () => {
     const { LoginWithGoogle } = useContext(AuthContext);
     const { createUser, updateUser } = useContext(AuthContext)
     const [error, setError] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
+
+    if (token) {
+        navigate('/')
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -26,15 +33,13 @@ const Signup = () => {
 
         createUser(email, password)
             .then(result => {
-                toast.success('signup successful')
                 const profile = {
                     displayName: name
                 }
                 updateUser(profile)
                     .then(() => {
                         saveUser(user)
-                        navigate('/')
-                        form.reset(' ')
+                        form.reset('')
                     })
                     .catch(error => {
                         console.log(error);
@@ -56,18 +61,16 @@ const Signup = () => {
                     email: result.user.email,
                     role: "buyer"
                 }
-                saveUser(user)
-                navigate('/')
+                saveUser(user);
                 toast.success("Login in successful");
 
             })
             .catch(error => {
-                setError(error.message)
+                setError(error.message);
             })
     }
 
     const saveUser = (user) => {
-        console.log(user);
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -80,6 +83,8 @@ const Signup = () => {
                 if (data.acknowledged) {
                     toast.success('User Saved successful')
                 }
+
+                setCreatedUserEmail(user?.email)
             })
     }
 

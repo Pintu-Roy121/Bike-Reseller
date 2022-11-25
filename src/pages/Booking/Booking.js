@@ -2,14 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 
 const Booking = () => {
     const { id } = useParams();
     const { user } = useContext(AuthContext)
-    const { register, handleSubmit, formState: { errors }, reset } = useForm()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const navigate = useNavigate();
 
     const { data: product = {}, isLoading } = useQuery({
         queryKey: ['product', id],
@@ -40,7 +42,12 @@ const Booking = () => {
             .then(data => {
                 if (data.acknowledged) {
                     reset();
-                    toast.success('Booking completed')
+                    navigate('/dashboard/myorders')
+                    Swal.fire(
+                        'Success!',
+                        'Product booking Successful!',
+                        'success'
+                    )
                 }
             })
     }

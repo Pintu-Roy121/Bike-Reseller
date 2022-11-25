@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const CheckOutForm = ({ booking }) => {
     const [cardError, setCardError] = useState('');
@@ -90,7 +91,13 @@ const CheckOutForm = ({ booking }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    if (data.acknowledged) {
+                        Swal.fire(
+                            'Successful!',
+                            'Payment Success',
+                            'success'
+                        )
+                    }
                 })
 
         }

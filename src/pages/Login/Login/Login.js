@@ -3,32 +3,40 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useToken from '../../../hooks/useToken/useToken';
 
 const Login = () => {
-    const { Login, LoginWithGoogle } = useContext(AuthContext)
-    const [error, setError] = useState('')
+    const { Login, LoginWithGoogle } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [error, setError] = useState('');
+    const [loginEmail, setLoginEmail] = useState('')
+    const [token] = useToken(loginEmail);
     const navigate = useNavigate();
 
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const handleLogin = (data) => {
+
         Login(data.email, data.password)
             .then(result => {
                 toast.success('Login successful');
-                navigate(from, { replace: true });
+                setLoginEmail(data.email)
             })
             .catch(error => {
                 setError(error.message);
             })
     }
 
+
     const handleGoogleLogin = () => {
         LoginWithGoogle()
             .then(result => {
-                navigate(from, { replace: true });
+                setLoginEmail(result.user.email)
                 toast.success("Login in successful")
             })
             .catch(error => {
@@ -38,7 +46,7 @@ const Login = () => {
 
     return (
         <div className='my-24 bg-slate-200 w-3/4 mx-auto p-24 rounded-xl'>
-            <h1 className='text-4xl text-center font-bold'>Sign in to your Account</h1>
+            <h1 className='text-4xl text-center font-bold'>Login to your Account</h1>
             <form className='w-3/4 mx-auto' onSubmit={handleSubmit(handleLogin)}>
                 <div className="form-control">
                     <label className="label">
