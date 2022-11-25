@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FcApproval } from "react-icons/fc";
 
 const Product = ({ product }) => {
-    const { _id, model, img, location, seller_name, resale_price, original_price, yearsof_use } = product;
+    const { _id, model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
 
     return (
         <div>
@@ -10,7 +11,15 @@ const Product = ({ product }) => {
                 <figure><img className='h-72 w-full' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl font-bold">{model}</h2>
-                    <h2 className='text-xl font-bold'>{seller_name}</h2>
+                    {
+                        user_verify ?
+                            <span className='flex items-center gap-2'>
+                                <h2 className='text-xl font-bold'>{seller_name}</h2>
+                                <FcApproval className='text-xl font-bold' />
+                            </span>
+                            :
+                            <h2 className='text-xl font-bold'>{seller_name}</h2>
+                    }
                     <div className='flex justify-between text-lg font-semibold'>
                         <div>
                             <p>Location: {location}</p>

@@ -8,6 +8,7 @@ import Blog from "../../pages/Blog/Blog";
 import Booking from "../../pages/Booking/Booking";
 import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
+import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
 import Reported from "../../pages/Dashboard/Reported/Reported";
@@ -17,6 +18,7 @@ import Signup from "../../pages/Login/Signup/Signup";
 import PageNotFound from "../../Shared/PageNotFound/PageNotFound";
 import AdminRutes from "../AdminRoutes/AdminRutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
     {
@@ -58,11 +60,15 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         children: [
-
             {
                 path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            },
+            {
+                path: '/dashboard/allsellers',
                 element: <AdminRutes><AllSellers></AllSellers></AdminRutes>
             },
+            // admin: roypintu121@gmail.compact pass: 123456
             {
                 path: '/dashboard/allbuyers',
                 element: <AdminRutes><AllBuyers></AllBuyers></AdminRutes>
@@ -77,11 +83,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             }
         ]
     },

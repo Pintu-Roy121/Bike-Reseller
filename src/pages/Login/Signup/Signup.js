@@ -47,10 +47,19 @@ const Signup = () => {
     }
 
     const handleGoogleLogin = () => {
+
         LoginWithGoogle()
             .then(result => {
+
+                const user = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    role: "buyer"
+                }
+                saveUser(user)
                 navigate('/')
-                toast.success("Login in successful")
+                toast.success("Login in successful");
+
             })
             .catch(error => {
                 setError(error.message)
@@ -68,8 +77,9 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                // getUserToken(email)
+                if (data.acknowledged) {
+                    toast.success('User Saved successful')
+                }
             })
     }
 

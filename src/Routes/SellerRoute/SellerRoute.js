@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
-import useAdmin from '../../hooks/useAdmin/useAdmin';
+import useSeller from '../../hooks/useSeller/useSeller';
 import Loading from '../../Shared/Loading/Loading';
 
-const AdminRutes = ({ children }) => {
+const SellerRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
-    const [isAdmin, isAdminLoading] = useAdmin(user?.email);
+    const [isSeller,] = useSeller(user?.email);
 
 
 
-    if (loading || isAdminLoading) {
+    if (loading) {
         return <Loading></Loading>
     }
 
-    if (user && isAdmin) {
+    if (user && isSeller) {
         return children
     }
 };
 
-export default AdminRutes; 
+export default SellerRoute;

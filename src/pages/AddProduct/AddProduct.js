@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -9,12 +10,34 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate()
 
+    const { data: loginuser = {} } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/user/${user.email}`);
+            const data = await res.json();
+            return data;
+        }
+    })
+
     const imageHostkey = process.env.REACT_APP_Imagebb_key;
+
+
 
     const AddProduct = (data) => {
         const formData = new FormData();
         const image = data.image[0]
         formData.append('image', image)
+        // set time when add the product....................................
+        let time_ob = new Date();
+        let hours = time_ob.getHours();
+        let minutes = time_ob.getMinutes();
+        let seconds = time_ob.getSeconds();
+        const time = {
+            hours,
+            minutes,
+            seconds
+        }
+
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkey}`
 
         fetch(url, {
@@ -37,7 +60,9 @@ const AddProduct = () => {
                         quality: data.quality,
                         resale_price: data.resale_price,
                         years: data.years,
-                        yearsof_use: data.yearsof_use
+                        yearsof_use: data.yearsof_use,
+                        user_verify: loginuser.verify,
+                        time
 
                     }
                     fetch('http://localhost:5000/product', {

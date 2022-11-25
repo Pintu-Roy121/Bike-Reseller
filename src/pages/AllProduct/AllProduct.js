@@ -3,6 +3,7 @@ import React from 'react';
 import Product from '../Product/Product';
 
 const AllProduct = () => {
+
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
