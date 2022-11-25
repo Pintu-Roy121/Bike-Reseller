@@ -12,7 +12,7 @@ const Category = ({ category }) => {
             <h2 className="text-center uppercase text-2xl font-black">{brand}</h2>
             <div className="card-body items-center text-center">
                 <div className="card-actions">
-                    <Link to={`/allproducts/${_id}`}>
+                    <Link to={`/allproducts/${brand}`}>
                         <button className="btn btn-primary">See All Products</button>
                     </Link>
                 </div>

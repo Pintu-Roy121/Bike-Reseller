@@ -5,10 +5,10 @@ import Loading from '../../Shared/Loading/Loading';
 import Product from '../Product/Product';
 
 const AllProducts = () => {
-    const { brand } = useParams()
+    // const { brand } = useParams()
     const { loading } = useContext(AuthContext);
     const products = useLoaderData();
-    console.log(brand);
+    // console.log(brand);
 
     if (loading) {
         return <Loading></Loading>
