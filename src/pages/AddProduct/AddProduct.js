@@ -71,6 +71,7 @@ const AddProduct = () => {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
                         },
                         body: JSON.stringify(product)
                     })
@@ -79,7 +80,7 @@ const AddProduct = () => {
                             if (data.acknowledged) {
                                 navigate('/dashboard/myproducts')
                                 Swal.fire(
-                                    'Success!',
+                                    'Successful!',
                                     'Product add Successful!',
                                     'success'
                                 )

@@ -27,20 +27,26 @@ const MyProducts = () => {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/delete/${id}`, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount) {
-                    Swal.fire(
-                        'Success!',
-                        'Product Deleted Successfully!',
-                        'success'
-                    )
-                    setRefresh(!refresh)
+        const agree = window.confirm('Are you sure Want to Delete? ')
+        if (agree) {
+            fetch(`http://localhost:5000/delete/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        Swal.fire(
+                            'Deleted Successful!',
+                            'Product Deleted Successfully!',
+                            'success'
+                        )
+                        setRefresh(!refresh)
+                    }
+                })
+        }
     }
 
     return (
