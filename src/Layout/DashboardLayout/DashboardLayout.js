@@ -12,7 +12,6 @@ const DashboardLayout = () => {
     const [isBuyer] = useBuyer(user?.email);
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email);
-    // console.log(isSeller);
 
     return (
         <div>
@@ -30,15 +29,15 @@ const DashboardLayout = () => {
                         }
                         {
                             isAdmin && <>
-                                <li ><Link to='/dashboard/allsellers' className='btn btn-outline '>All Sellers</Link></li>
-                                <li ><Link to='/dashboard/allbuyers' className='btn btn-outline '>All Buyers</Link></li>
-                                <li ><Link to='/dashboard/reported' className='btn btn-outline '>Reported Items</Link></li>
+                                <li ><Link to='/dashboard/allsellers' className='btn btn-info btn-outline border-info '>All Sellers</Link></li>
+                                <li ><Link to='/dashboard/allbuyers' className='btn btn-info btn-outline border-info '>All Buyers</Link></li>
+                                <li ><Link to='/dashboard/reported' className='btn btn-info btn-outline border-info '>Reported Items</Link></li>
                             </>
                         }
                         {
                             isSeller && <>
-                                <li ><Link to='/dashboard/myproducts' className='btn btn-outline '>My Products</Link></li>
-                                <li ><Link to='/dashboard/addproduct' className='btn btn-outline '>Add a Product</Link></li>
+                                <li ><Link to='/dashboard/myproducts' className='btn btn-info btn-outline border-info '>My Products</Link></li>
+                                <li ><Link to='/dashboard/addproduct' className='btn btn-info btn-outline border-info '>Add a Product</Link></li>
                             </>
                         }
                     </ul>

@@ -1,8 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider';
+import Loading from '../../Shared/Loading/Loading';
 import Product from '../Product/Product';
 
 const AllProduct = () => {
+    const { loading } = useContext(AuthContext);
 
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
@@ -12,6 +15,10 @@ const AllProduct = () => {
             return data;
         }
     })
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='w-11/12 mx-auto my-10'>

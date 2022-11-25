@@ -52,7 +52,7 @@ const Booking = () => {
                 <div className='grid grid-cols-2 gap-5 font-semibold'>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Seller Name:</span>
+                            <span className="label-text text-base font-bold">Seller Name:</span>
                         </label>
                         <input type="text"
                             defaultValue={user?.displayName}
@@ -64,7 +64,7 @@ const Booking = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Email:</span>
+                            <span className="label-text text-base font-bold">Email:</span>
                         </label>
                         <input type="email"
                             defaultValue={user?.email}
@@ -75,7 +75,7 @@ const Booking = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Product Name:</span>
+                            <span className="label-text text-base font-bold">Product Name:</span>
                         </label>
                         <input type="text"
                             defaultValue={model}
@@ -86,7 +86,7 @@ const Booking = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Product Price:</span>
+                            <span className="label-text text-base font-bold">Product Price:</span>
                         </label>
                         <input type="text"
                             defaultValue={resale_price}
@@ -107,7 +107,7 @@ const Booking = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Product Price:</span>
+                            <span className="label-text text-base font-bold">Your Mobile No:</span>
                         </label>
                         <input type="text"
                             {...register("phone", {
@@ -119,7 +119,7 @@ const Booking = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Meeting Location:</span>
+                            <span className="label-text text-base font-bold">Meeting Location:</span>
                         </label>
                         <input type="text"
                             {...register("location", {
