@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
-import Product from '../../Product/Product';
 
 const MyProducts = () => {
     const { user, loading } = useContext(AuthContext);

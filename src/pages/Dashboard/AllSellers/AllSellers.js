@@ -5,16 +5,6 @@ import toast from 'react-hot-toast';
 import { FcApproval } from "react-icons/fc";
 
 const AllSellers = () => {
-    // const [allsellers, setAllSellers] = useState([]);
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/users/sellers')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setAllSellers(data);
-    //         })
-    // }, [])
-
     const { data: allsellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -37,10 +27,28 @@ const AllSellers = () => {
             })
     }
 
+    const handleDelete = (id) => {
+        const agree = window.confirm("Deleted Item cann 't resore");
+        if (agree) {
+            fetch(`http://localhost:5000/sellers/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        toast.success('seller deleted successfull')
+                        refetch();
+                    }
+                })
+
+        }
+    }
+
 
     return (
         <div>
             <div className="overflow-x-auto">
+                <h1 className='text-2xl mb-5 underline font-bold text-center'>Toal Sellers: {allsellers.length}</h1>
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -67,10 +75,13 @@ const AllSellers = () => {
                                     <td>{seller.email}</td>
                                     <td>{seller.role}</td>
                                     <td>
-                                        <button className='btn btn-sm btn-error mr-2'>Delete seller</button>
+                                        <button onClick={() => handleDelete(seller._id)} className='btn btn-sm btn-error mr-2'>Delete seller</button>
                                         {
-                                            seller?.verify ||
-                                            <button onClick={() => handleVerify(seller._id)} className='btn btn-sm btn-info'>verify user</button>
+                                            seller?.verify ?
+                                                <>
+                                                </>
+                                                :
+                                                <button onClick={() => handleVerify(seller._id)} className='btn btn-sm btn-info'>verify user</button>
                                         }
                                     </td>
                                 </tr>)

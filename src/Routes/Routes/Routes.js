@@ -8,7 +8,6 @@ import Blog from "../../pages/Blog/Blog";
 import Booking from "../../pages/Booking/Booking";
 import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
-import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
 import Reported from "../../pages/Dashboard/Reported/Reported";
@@ -16,6 +15,7 @@ import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login/Login";
 import Signup from "../../pages/Login/Signup/Signup";
 import PageNotFound from "../../Shared/PageNotFound/PageNotFound";
+import AdminRutes from "../AdminRoutes/AdminRutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 export const router = createBrowserRouter([
@@ -58,21 +58,18 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         children: [
+
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <AdminRutes><AllSellers></AllSellers></AdminRutes>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AdminRutes><AllBuyers></AllBuyers></AdminRutes>
             },
             {
                 path: '/dashboard/myorders',
                 element: <MyOrders></MyOrders>
-            },
-            {
-                path: '/dashboard/allbuyers',
-                element: <AllBuyers></AllBuyers>
-            },
-            {
-                path: '/dashboard/allsellers',
-                element: <AllSellers></AllSellers>
             },
             {
                 path: '/dashboard/reported',
