@@ -6,26 +6,27 @@ import ReadyToJoin from '../ReadyToJoin/ReadyToJoin';
 
 const Home = () => {
 
-    const [advertiseData, setAdvertiseData] = useState([]);
+    // const [advertiseData, setAdvertiseData] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/advertise')
-            .then(res => res.json())
-            .then(data => {
-                setAdvertiseData(data)
-            })
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/advertise')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAdvertiseData(data)
+    //         })
+    // }, [])
 
     return (
         <div>
             <Banner></Banner>
             <Categories></Categories>
-            {
+            <Advertise></Advertise>
+            {/* {
                 advertiseData.map(data => <Advertise
                     key={data._id}
                     data={data}
                 ></Advertise>)
-            }
+            } */}
             <ReadyToJoin></ReadyToJoin>
         </div>
     );
