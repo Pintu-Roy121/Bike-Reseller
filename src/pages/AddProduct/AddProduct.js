@@ -130,10 +130,11 @@ const AddProduct = () => {
                             <span className="label-text text-base font-semibold">Seller Name:</span>
                         </label>
                         <input type="text"
+                            defaultValue={user?.displayName}
                             {...register("name", {
                                 required: 'name is Required'
                             })}
-                            className="input input-bordered input-info w-full" />
+                            className="input input-bordered input-info w-full" readOnly />
                         {errors.name && <p className='text-red-600'>{errors.name?.message}</p>}
                     </div>
                     <div className="form-control w-full">

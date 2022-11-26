@@ -38,6 +38,7 @@ const AllProduct = () => {
                 selectProduct && <BookingModal
                     refetch={refetch}
                     selectProduct={selectProduct}
+                    setSelectedProduct={setSelectedProduct}
                 ></BookingModal>
             }
         </div>

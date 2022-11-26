@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import PrivateRoutes from '../../Routes/PrivateRoutes/PrivateRoutes';
 import Loading from '../../Shared/Loading/Loading';
 import BookingModal from '../BookingModal/BookingModal';
 import Product from '../Product/Product';
@@ -43,11 +44,13 @@ const AllProducts = () => {
                 }
             </div>
             {
-                selectProduct && <BookingModal
-                    refetch={refetch}
-                    selectProduct={selectProduct}
-                    setSelectedProduct={setSelectedProduct}
-                ></BookingModal>
+                selectProduct && <PrivateRoutes>
+                    <BookingModal
+                        refetch={refetch}
+                        selectProduct={selectProduct}
+                        setSelectedProduct={setSelectedProduct}
+                    ></BookingModal>
+                </PrivateRoutes>
             }
         </div>
     );

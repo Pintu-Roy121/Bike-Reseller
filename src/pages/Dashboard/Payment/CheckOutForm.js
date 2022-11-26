@@ -11,7 +11,7 @@ const CheckOutForm = ({ booking }) => {
     const stripe = useStripe();
     const elements = useElements()
 
-    const { price, name, email, _id } = booking;
+    const { price, name, email, _id, productid } = booking;
 
 
 
@@ -76,10 +76,12 @@ const CheckOutForm = ({ booking }) => {
             setSuccess('Congrats! Your Payment Completed');
             setTransectionId(paymentIntent.id)
             const payment = {
+                name,
                 price,
                 transectionId: paymentIntent.id,
                 email,
-                bookingId: _id
+                bookingId: _id,
+                productid
             }
 
             fetch('http://localhost:5000/payments', {

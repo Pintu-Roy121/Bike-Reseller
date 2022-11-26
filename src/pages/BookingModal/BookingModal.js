@@ -11,7 +11,7 @@ const BookingModal = ({ selectProduct, setSelectedProduct, refetch }) => {
     const navigate = useNavigate()
 
     // console.log(selectProduct);
-    const { model, img, resale_price } = selectProduct
+    const { model, img, resale_price, _id } = selectProduct
 
     const handleBooking = (data) => {
 
@@ -25,7 +25,6 @@ const BookingModal = ({ selectProduct, setSelectedProduct, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-
                     setSelectedProduct(null)
                     refetch()
                     navigate('/dashboard/myorders')
@@ -47,6 +46,17 @@ const BookingModal = ({ selectProduct, setSelectedProduct, refetch }) => {
                     <h3 className="text-lg font-bold">You Booking Bike is: {model}</h3>
                     <form onSubmit={handleSubmit(handleBooking)}>
                         <div className='grid font-semibold'>
+                            {/* Product Id is hidden here........................ */}
+                            <div className="form-control w-full hidden">
+                                <label className="label">
+                                </label>
+                                <input type="text"
+                                    defaultValue={_id}
+                                    {...register("productid", {
+                                        required: 'productId is Required'
+                                    })}
+                                    className="input input-bordered input-info w-full" readOnly />
+                            </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text text-base font-bold">Seller Name:</span>
@@ -92,13 +102,14 @@ const BookingModal = ({ selectProduct, setSelectedProduct, refetch }) => {
                                     })}
                                     className="input input-bordered input-info w-full" readOnly />
                             </div>
+                            {/*Product Image is hidden ................................ */}
                             <div className="form-control w-full hidden">
                                 <label className="label">
                                 </label>
                                 <input type="text"
                                     defaultValue={img}
                                     {...register("img", {
-                                        required: 'price is Required'
+                                        required: 'img is Required'
                                     })}
                                     className="input input-bordered input-info w-full" readOnly />
                             </div>

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import useToken from '../../../hooks/useToken/useToken';
 
@@ -36,13 +37,39 @@ const Login = () => {
     const handleGoogleLogin = () => {
         LoginWithGoogle()
             .then(result => {
+                const user = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    role: "buyer"
+                }
+                saveUser(user);
                 setLoginEmail(result.user.email)
-                toast.success("Login in successful")
             })
             .catch(error => {
                 setError(error.message)
             })
     }
+
+    const saveUser = (user) => {
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('User Saved successful')
+                }
+                // toast.success(`${data.message}`)
+            })
+    }
+
+
+
+
 
     return (
         <div className='my-24 bg-slate-200 w-3/4 mx-auto p-24 rounded-xl'>

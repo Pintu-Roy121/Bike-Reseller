@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
+import { FaCheck } from "react-icons/fa";
 
 const MyProducts = () => {
     const { user, loading } = useContext(AuthContext);
@@ -82,6 +83,7 @@ const MyProducts = () => {
                             <th>car model</th>
                             <th>seller_Name</th>
                             <th>Price</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -103,17 +105,33 @@ const MyProducts = () => {
                                     <td>{product.seller_name}</td>
                                     <td>{product.resale_price} $</td>
                                     <td>
+                                        {
+                                            product?.sold ?
+                                                <span className='text-lg font-bold text-success flex items-center gap-2'>
+                                                    <span>Sold</span>
+                                                    <FaCheck />
+                                                </span>
+                                                :
+                                                <span className='text-lg font-bold text-info'>Available</span>
+
+
+                                        }
+                                    </td>
+                                    <td>
                                         <button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-error'>Delete</button>
-                                        <Link onClick={() => handleAdvertise(product)}>
-                                            <button className='btn btn-sm btn-info ml-2'>Advertise</button>
-                                        </Link>
+                                        {
+                                            product?.sold ||
+                                            <Link onClick={() => handleAdvertise(product)}>
+                                                <button className='btn btn-sm btn-info ml-2'>Advertise</button>
+                                            </Link>
+                                        }
                                     </td>
                                 </tr>)
                         }
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     );
 };
 
