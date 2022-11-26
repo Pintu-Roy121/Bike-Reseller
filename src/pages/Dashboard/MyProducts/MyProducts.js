@@ -8,7 +8,7 @@ import { FaCheck, FaTrashAlt } from "react-icons/fa";
 const MyProducts = () => {
     const { user, loading } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
-    const [refresh, setRefresh] = useState(false)
+    const [refresh, setRefresh] = useState(true);
 
 
     useEffect(() => {
@@ -68,7 +68,14 @@ const MyProducts = () => {
                         'Show Your Advertise on Home page!',
                         'success'
                     )
+                } else {
+                    Swal.fire(
+                        `${data.message}`,
+                        'Show Your Advertise on Home page!',
+                        'success'
+                    )
                 }
+                setRefresh(!refresh)
             })
     }
 
@@ -129,9 +136,15 @@ const MyProducts = () => {
                                             <FaTrashAlt onClick={() => handleDelete(product._id)} className='text-2xl text-error cursor-pointer hover:text-red-500 duration-500' />
                                             {
                                                 product?.sold ||
-                                                <Link onClick={() => handleAdvertise(product)}>
-                                                    <button className='btn btn-sm btn-info ml-2'>Advertise</button>
-                                                </Link>
+                                                <>
+                                                    {
+                                                        product?.advertise ? <span className='text-lg font-semibold text-success ml-2'>Advertising</span>
+                                                            :
+                                                            <Link onClick={() => handleAdvertise(product)}>
+                                                                <button className='btn btn-sm btn-info ml-2'>Advertise</button>
+                                                            </Link>
+                                                    }
+                                                </>
                                             }
                                         </div>
                                     </td>
