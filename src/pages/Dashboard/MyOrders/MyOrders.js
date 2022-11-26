@@ -7,7 +7,7 @@ import Orders from '../Orders/Orders';
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
 
-    const { data: bookings = [], isLoading } = useQuery({
+    const { data: bookings = [], isLoading, refetch } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
@@ -32,6 +32,7 @@ const MyOrders = () => {
                     bookings.map(booked => <Orders
                         key={booked._id}
                         booked={booked}
+                        refetch={refetch}
                     ></Orders>)
                 }
             </div>
