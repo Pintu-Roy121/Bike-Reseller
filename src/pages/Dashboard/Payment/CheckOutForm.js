@@ -14,12 +14,13 @@ const CheckOutForm = ({ booking }) => {
     const { price, name, email, _id, productid } = booking;
 
 
-
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
-            method: "POST",
+        fetch('http://localhost:5000/create-payment-intent', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                // "Content-Type": "application/json"
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({ price }),
         })
@@ -31,7 +32,7 @@ const CheckOutForm = ({ booking }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        console.log(booking);
         if (!stripe || !elements) {
             return;
         }
@@ -83,6 +84,7 @@ const CheckOutForm = ({ booking }) => {
                 bookingId: _id,
                 productid
             }
+            console.log(payment);
 
             fetch('http://localhost:5000/payments', {
                 method: 'POST',

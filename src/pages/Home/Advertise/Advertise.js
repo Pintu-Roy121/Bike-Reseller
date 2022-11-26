@@ -16,6 +16,7 @@ const Advertise = () => {
                 setAdvertiseData(data)
             })
     }, [])
+    // console.log(advertiseData);
 
     return (
         <div className='w-1/2 mx-auto text-center my-32 '>
@@ -24,22 +25,29 @@ const Advertise = () => {
                 <img className='absolute z-50 -top-24 -rotate-12' src={offer} alt="" />
                 <Swiper pagination={true} modules={[Pagination]}>
                     {
-                        advertiseData.map((addver, i) =>
-                            <SwiperSlide
-                                key={i}
-                            >
-                                <div>
-                                    <img className='w-full h-96 object-contain' src={addver.img} alt='' />
-                                    <p className="text-2xl font-bold">{addver.model}</p>
-                                    <p className="text-3xl font-bold">{addver.brand_name}</p>
-                                </div>
-                            </SwiperSlide>
-                        )
+                        advertiseData.map(adproduct =>
+                            <div key={adproduct._id}>
+                                {
+                                    adproduct?.sold ?
+                                        <></>
+                                        :
+                                        <SwiperSlide>
+                                            <div>
+                                                <img className='w-full h-96 object-contain' src={adproduct.img} alt='' />
+                                                <p className="text-2xl font-bold">{adproduct._id}</p>
+                                                <p className="text-2xl font-bold">{adproduct.model}</p>
+                                                <p className="text-3xl font-bold">{adproduct.brand_name}</p>
+                                            </div>
+                                        </SwiperSlide>
+
+                                }
+                            </div>)
                     }
                 </Swiper>
             </div>
 
         </div>
+
     );
 }
 export default Advertise;

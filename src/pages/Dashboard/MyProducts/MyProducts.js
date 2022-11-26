@@ -52,6 +52,7 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = (product) => {
+        console.log(product);
         fetch('http://localhost:5000/advertise', {
             method: 'POST',
             headers: {
@@ -135,16 +136,16 @@ const MyProducts = () => {
                                             {/* <button onClick={() => handleDelete(product._id)} className='border p-1'> <FaTrashAlt className='text-2xl' /> </button> */}
                                             <FaTrashAlt onClick={() => handleDelete(product._id)} className='text-2xl text-error cursor-pointer hover:text-red-500 duration-500' />
                                             {
-                                                product?.sold ||
-                                                <>
-                                                    {
-                                                        product?.advertise ? <span className='text-lg font-semibold text-success ml-2'>Advertising</span>
-                                                            :
-                                                            <Link onClick={() => handleAdvertise(product)}>
-                                                                <button className='btn btn-sm btn-info ml-2'>Advertise</button>
-                                                            </Link>
-                                                    }
-                                                </>
+                                                product?.sold ? '' :
+                                                    <>
+                                                        {
+                                                            product?.advertise ? <span className='text-lg font-semibold text-success ml-2'>Advertising</span>
+                                                                :
+                                                                <Link onClick={() => handleAdvertise(product)}>
+                                                                    <button className='btn btn-sm btn-info ml-2'>Advertise</button>
+                                                                </Link>
+                                                        }
+                                                    </>
                                             }
                                         </div>
                                     </td>

@@ -9,11 +9,14 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
     const booking = useLoaderData()
-    const { product, price, location, name, phone } = booking;
+    const { product, price, location, name, phone, _id } = booking;
+    // console.log(booking);
+
     return (
         <div className='w-3/4 mx-auto my-5 '>
             <h1 className='text-4xl font-bold'>Payment for: <span className='text-primary'>{product}</span></h1>
             <p className='text-3xl font-bold'>Price: <span className='text-sky-700'>$ {price}</span></p>
+            <p className='text-3xl font-bold'>Price: <span className='text-sky-700'>$ {_id}</span></p>
             <p className='text-xl font-semibold'>Location of Receive : <span className='text-primary'>{location}</span></p>
             <div>
                 <p className='text-lg font-bold'>Seller Name : <span className='text-primary'>{name}</span></p>
