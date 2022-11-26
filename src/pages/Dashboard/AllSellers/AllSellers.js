@@ -70,11 +70,13 @@ const AllSellers = () => {
                                     key={seller._id}
                                 >
                                     <th>{i + 1}</th>
-                                    <td className='font-bold flex items-center gap-2'>
-                                        {seller.name}
-                                        {
-                                            seller?.verify && <FcApproval />
-                                        }
+                                    <td>
+                                        <span className='font-bold flex items-center gap-2'>
+                                            {seller.name}
+                                            {
+                                                seller?.verify && <FcApproval />
+                                            }
+                                        </span>
                                     </td>
                                     <td>{seller.email}</td>
                                     <td>{seller.role}</td>

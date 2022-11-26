@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaTrashAlt } from "react-icons/fa";
 
 const MyProducts = () => {
     const { user, loading } = useContext(AuthContext);
@@ -101,7 +101,12 @@ const MyProducts = () => {
                                             </div>
                                         </div>
                                     </th>
-                                    <td>{product.model}</td>
+                                    <td>
+                                        <span className='flex flex-col'>
+                                            <span className='text-lg font-bold'>{product.model}</span>
+                                            <span className='text-sm font-semibold'>{product.brand_name}</span>
+                                        </span>
+                                    </td>
                                     <td>{product.seller_name}</td>
                                     <td>{product.resale_price} $</td>
                                     <td>
@@ -118,13 +123,16 @@ const MyProducts = () => {
                                         }
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-error'>Delete</button>
-                                        {
-                                            product?.sold ||
-                                            <Link onClick={() => handleAdvertise(product)}>
-                                                <button className='btn btn-sm btn-info ml-2'>Advertise</button>
-                                            </Link>
-                                        }
+                                        <div className='flex items-center gap-1'>
+                                            {/* <button onClick={() => handleDelete(product._id)} className='border p-1'> <FaTrashAlt className='text-2xl' /> </button> */}
+                                            <FaTrashAlt onClick={() => handleDelete(product._id)} className='text-2xl text-error cursor-pointer hover:text-red-500 duration-500' />
+                                            {
+                                                product?.sold ||
+                                                <Link onClick={() => handleAdvertise(product)}>
+                                                    <button className='btn btn-sm btn-info ml-2'>Advertise</button>
+                                                </Link>
+                                            }
+                                        </div>
                                     </td>
                                 </tr>)
                         }
