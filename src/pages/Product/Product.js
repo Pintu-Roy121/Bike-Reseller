@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FcApproval } from "react-icons/fc";
 
-const Product = ({ product }) => {
-    const { _id, model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
+const Product = ({ product, setSelectedProduct }) => {
+
+    const { model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
+
 
     return (
         <div>
@@ -31,9 +32,11 @@ const Product = ({ product }) => {
                         </div>
                     </div>
                     <div className="card-actions justify-end">
-                        <Link to={`/booking/${_id}`}>
+                        {/* <Link to={`/booking/${_id}`}>
                             <button className="btn btn-primary btn-sm">Booking</button>
-                        </Link>
+                        </Link> */}
+
+                        <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">booking</label>
                     </div>
                 </div>
             </div>

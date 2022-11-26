@@ -1,12 +1,30 @@
-import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
+import BookingModal from '../BookingModal/BookingModal';
 import Product from '../Product/Product';
 
 const AllProducts = () => {
+    const { brand } = useParams();
     const { loading } = useContext(AuthContext);
-    const products = useLoaderData();
+    // const products = useLoaderData();
+    const [selectProduct, setSelectedProduct] = useState(null)
+
+
+    const { data: products = [], refetch } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/products/${brand}`);
+            const data = await res.json();
+            return data;
+        }
+    })
+
+
+
+
 
     if (loading) {
         return <Loading></Loading>
@@ -20,9 +38,17 @@ const AllProducts = () => {
                     products.map(product => <Product
                         key={product._id}
                         product={product}
+                        setSelectedProduct={setSelectedProduct}
                     ></Product>)
                 }
             </div>
+            {
+                selectProduct && <BookingModal
+                    refetch={refetch}
+                    selectProduct={selectProduct}
+                    setSelectedProduct={setSelectedProduct}
+                ></BookingModal>
+            }
         </div>
     );
 };

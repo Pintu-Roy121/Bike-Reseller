@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
@@ -49,6 +50,26 @@ const MyProducts = () => {
         }
     }
 
+    const handleAdvertise = (product) => {
+        fetch('http://localhost:5000/advertise', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    Swal.fire(
+                        'Advertise Successful!',
+                        'Show Your Advertise on Home page!',
+                        'success'
+                    )
+                }
+            })
+    }
+
     return (
         <div className='my-5'>
             <div className="overflow-x-auto">
@@ -82,7 +103,10 @@ const MyProducts = () => {
                                     <td>{product.seller_name}</td>
                                     <td>{product.resale_price} $</td>
                                     <td>
-                                        <button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-error'>Delete Product</button>
+                                        <button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-error'>Delete</button>
+                                        <Link onClick={() => handleAdvertise(product)}>
+                                            <button className='btn btn-sm btn-info ml-2'>Advertise</button>
+                                        </Link>
                                     </td>
                                 </tr>)
                         }
