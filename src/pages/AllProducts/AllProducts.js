@@ -23,10 +23,6 @@ const AllProducts = () => {
         }
     })
 
-
-
-
-
     if (loading) {
         return <Loading></Loading>
     }

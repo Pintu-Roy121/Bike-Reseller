@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -29,15 +30,9 @@ const AddProduct = () => {
         formData.append('image', image)
 
         // set time when add the product....................................
-        let time_ob = new Date();
-        let hours = time_ob.getHours();
-        let minutes = time_ob.getMinutes();
-        let seconds = time_ob.getSeconds();
-        const time = {
-            hours,
-            minutes,
-            seconds
-        }
+        const date = new Date();
+        const selectdate = format(date, 'PP');
+        console.log(selectdate);
 
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkey}`
 
@@ -63,7 +58,7 @@ const AddProduct = () => {
                         years: data.years,
                         yearsof_use: data.yearsof_use,
                         user_verify: loginuser.verify,
-                        time
+                        date: selectdate
 
                     }
                     fetch('http://localhost:5000/product', {

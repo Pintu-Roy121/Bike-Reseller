@@ -18,6 +18,7 @@ const Advertise = () => {
     }, [])
     // console.log(advertiseData);
 
+
     return (
         <div className='w-1/2 mx-auto text-center my-32 '>
             <h1 className='text-4xl font-bold underline my-10'>Advertised Product</h1>
@@ -25,8 +26,8 @@ const Advertise = () => {
                 <img className='absolute z-50 -top-24 -rotate-12' src={offer} alt="" />
                 <Swiper pagination={true} modules={[Pagination]}>
                     {
-                        advertiseData.map(adproduct =>
-                            <div key={adproduct._id}>
+                        advertiseData.map((adproduct, i) =>
+                            <div key={i}>
                                 {
                                     adproduct?.sold ?
                                         <></>
@@ -52,17 +53,5 @@ const Advertise = () => {
 }
 export default Advertise;
 
-
-// <div className='w-1/2 mx-auto text-center my-32'>
-//     <h1 className='text-4xl font-bold underline'>Advertised Product</h1>
-//     <div className='flex flex-col justify-center my-4'>
-//         <h1 className='text-3xl font-bold '>Brand: <span className='text-orange-600'>{brand_name}</span></h1>
-//         <h1 className='text-3xl font-bold'>Model: <span className='text-orange-600'>{model}</span></h1>
-//     </div>
-//     <div className='relative mt-14'>
-//         <img className='absolute -top-24 -rotate-12' src={offer} alt="" />
-//         <img className='max-w-fit mx-auto rounded-lg object-cover' src={img} alt="" />
-//     </div>
-// </div>
 
 

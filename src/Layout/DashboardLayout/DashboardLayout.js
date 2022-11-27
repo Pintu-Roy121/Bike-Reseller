@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
 import useBuyer from '../../hooks/useBuyer/useBuyer';
 import useSeller from '../../hooks/useSeller/useSeller';
+import DashboardAdvertise from '../../pages/Dashboard/DashboardAdvertise/DashboardAdvertise';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 
@@ -40,6 +41,9 @@ const DashboardLayout = () => {
                                 <li ><Link to='/dashboard/addproduct' className='btn btn-info btn-outline border-info '>Add a Product</Link></li>
                             </>
                         }
+                        <div className='w-full'>
+                            <DashboardAdvertise></DashboardAdvertise>
+                        </div>
                     </ul>
 
                 </div>

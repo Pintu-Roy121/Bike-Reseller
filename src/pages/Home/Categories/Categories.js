@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import Loading from '../../../Shared/Loading/Loading';
 import Category from '../Category/Category';
 
 const Categories = () => {
+    const { loading } = useContext(AuthContext)
+
     // const [Categories, setCategoris] = useState([])
 
     // useEffect(() => {
@@ -22,6 +26,10 @@ const Categories = () => {
 
         }
     })
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
 
     return (
