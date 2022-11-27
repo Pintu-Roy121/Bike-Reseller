@@ -8,7 +8,7 @@ const AllBuyers = () => {
     useTitle('Buyers-Dashboard')
 
     useEffect(() => {
-        fetch('http://localhost:5000/users/buyers', {
+        fetch('https://bike-resell-shop-server.vercel.app/users/buyers', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -22,7 +22,7 @@ const AllBuyers = () => {
     const handleDelete = (id) => {
         const agree = window.confirm("Deleted Item cann 't resore Are you sure want to delete?");
         if (agree) {
-            fetch(`http://localhost:5000/buyers/${id}`, {
+            fetch(`https://bike-resell-shop-server.vercel.app/buyers/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

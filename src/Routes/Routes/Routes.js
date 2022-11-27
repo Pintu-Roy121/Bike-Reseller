@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/booked/payment/${params.id}`)
+                loader: ({ params }) => fetch(`https://bike-resell-shop-server.vercel.app/booked/payment/${params.id}`)
             }
         ]
     },

@@ -6,7 +6,7 @@ const useAdmin = (email) => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/buyer/${email}`)
+            fetch(`https://bike-resell-shop-server.vercel.app/users/buyer/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.role === 'admin') {

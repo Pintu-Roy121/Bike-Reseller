@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../../hooks/useTitle/useTitle';
+import PrivateRoutes from '../../Routes/PrivateRoutes/PrivateRoutes';
 import Loading from '../../Shared/Loading/Loading';
 import BookingModal from '../BookingModal/BookingModal';
 import Product from '../Product/Product';
@@ -14,7 +15,7 @@ const AllProduct = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allproducts`);
+            const res = await fetch(`https://bike-resell-shop-server.vercel.app/allproducts`);
             const data = await res.json();
             return data;
         }
@@ -38,11 +39,13 @@ const AllProduct = () => {
                 }
             </div>
             {
-                selectProduct && <BookingModal
-                    refetch={refetch}
-                    selectProduct={selectProduct}
-                    setSelectedProduct={setSelectedProduct}
-                ></BookingModal>
+                selectProduct && <PrivateRoutes>
+                    <BookingModal
+                        refetch={refetch}
+                        selectProduct={selectProduct}
+                        setSelectedProduct={setSelectedProduct}
+                    ></BookingModal>
+                </PrivateRoutes>
             }
         </div>
     );

@@ -17,7 +17,7 @@ const AddProduct = () => {
     const { data: loginuser = {} } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/user/${user.email}`);
+            const res = await fetch(`https://bike-resell-shop-server.vercel.app/user/${user.email}`);
             const data = await res.json();
             return data;
         }
@@ -72,7 +72,7 @@ const AddProduct = () => {
                         time
 
                     }
-                    // fetch('http://localhost:5000/product', {
+                    // fetch('https://bike-resell-shop-server.vercel.app/product', {
                     //     method: 'POST',
                     //     headers: {
                     //         'content-type': 'application/json',
@@ -92,7 +92,7 @@ const AddProduct = () => {
                     //         }
                     //     })
 
-                    axios.post('http://localhost:5000/product', product,
+                    axios.post('https://bike-resell-shop-server.vercel.app/product', product,
                         {
                             headers: {
                                 authorization: `bearer ${localStorage.getItem('accessToken')}`

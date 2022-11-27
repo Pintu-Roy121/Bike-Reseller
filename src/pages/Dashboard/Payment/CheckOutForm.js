@@ -17,7 +17,7 @@ const CheckOutForm = ({ booking }) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://bike-resell-shop-server.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 // "Content-Type": "application/json"
@@ -86,7 +86,7 @@ const CheckOutForm = ({ booking }) => {
                 productid
             }
 
-            fetch('http://localhost:5000/payments', {
+            fetch('https://bike-resell-shop-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

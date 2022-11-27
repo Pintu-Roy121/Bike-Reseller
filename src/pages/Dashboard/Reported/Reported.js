@@ -10,7 +10,7 @@ const Reported = () => {
     useTitle('Reported-Dashboard');
 
     useEffect(() => {
-        axios.get('http://localhost:5000/reported/products', {
+        axios.get('https://bike-resell-shop-server.vercel.app/reported/products', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -26,7 +26,7 @@ const Reported = () => {
     }
 
     const handleReport = (id) => {
-        fetch(`http://localhost:5000/reported/product/${id}`, {
+        fetch(`https://bike-resell-shop-server.vercel.app/reported/product/${id}`, {
             method: 'PATCH',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -9,7 +9,7 @@ const Orders = ({ booked, refetch }) => {
     const handleDelete = (id) => {
         const agree = window.confirm('Do you want to delete your order!!!')
         if (agree) {
-            fetch(`http://localhost:5000/bookings/${id}`, {
+            fetch(`https://bike-resell-shop-server.vercel.app/bookings/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

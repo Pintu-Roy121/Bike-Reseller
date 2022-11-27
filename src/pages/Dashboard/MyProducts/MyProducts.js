@@ -14,7 +14,7 @@ const MyProducts = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allproducts/${user?.email}`, {
+        fetch(`https://bike-resell-shop-server.vercel.app/allproducts/${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -33,7 +33,7 @@ const MyProducts = () => {
     const handleDelete = (id) => {
         const agree = window.confirm('Are you sure Want to Delete? ')
         if (agree) {
-            fetch(`http://localhost:5000/delete/${id}`, {
+            fetch(`https://bike-resell-shop-server.vercel.app/delete/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -54,7 +54,7 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = (product) => {
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://bike-resell-shop-server.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

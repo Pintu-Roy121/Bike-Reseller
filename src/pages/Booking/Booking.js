@@ -15,7 +15,7 @@ const Booking = () => {
     const { data: product = {}, isLoading } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/product/${id}`);
+            const res = await fetch(`https://bike-resell-shop-server.vercel.app/product/${id}`);
             const data = await res.json();
             return data;
         }
@@ -30,7 +30,7 @@ const Booking = () => {
     const handleBooking = (data) => {
 
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://bike-resell-shop-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -11,7 +11,7 @@ const DashboardAdvertise = () => {
     const [adDatas, setAdDatas] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/advertise')
+        fetch('https://bike-resell-shop-server.vercel.app/advertise')
             .then(res => res.json())
             .then(data => {
                 setAdDatas(data)

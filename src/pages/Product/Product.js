@@ -16,7 +16,7 @@ const Product = ({ product, setSelectedProduct }) => {
 
     const handleReport = (id) => {
 
-        fetch(`http://localhost:5000/reported/products/${id}`, {
+        fetch(`https://bike-resell-shop-server.vercel.app/reported/products/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
