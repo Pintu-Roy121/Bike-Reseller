@@ -2,9 +2,9 @@
 
 ### Bike-Reseller- Assignment-11 Live Site Link is Here:
 
-# https://creative-photograph.web.app/
+# https://bike-reseller.web.app/
 
-## Live Site Link : [https://creative-photograph.web.app/]
+## Live Site Link : https://bike-reseller.web.app/
 
 
 ## Used Features for this Project are:
@@ -22,4 +22,4 @@
 - Seller can advertise his product that show on the home page and also the dashboard page.
 - Only Admin can see the Reported Product.
 - Admin can delete the reported product or cancle the report.
-- 
+
