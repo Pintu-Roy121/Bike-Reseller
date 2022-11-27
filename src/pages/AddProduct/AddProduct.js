@@ -211,7 +211,7 @@ const AddProduct = () => {
                             {...register("years", {
                                 required: 'years is Required'
                             })}
-                            placeholder="Your Location"
+                            placeholder="Buying Year"
                             className="input input-bordered input-info w-full" />
                         {errors.years && <p className='text-red-600'>{errors.years?.message}</p>}
                     </div>

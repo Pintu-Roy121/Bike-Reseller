@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
@@ -26,7 +26,7 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 gap-3 rounded-lg text-xl font-semibold ">
                         {
-                            isBuyer && <li ><Link to='/dashboard/myorders' className='btn btn-info btn-outline'>My orders</Link></li>
+                            isAdmin || <li ><Link to='/dashboard/myorders' className='btn btn-info btn-outline'>My orders</Link></li>
                         }
                         {
                             isAdmin && <>
@@ -42,7 +42,7 @@ const DashboardLayout = () => {
                             </>
                         }
                         <div className='w-full'>
-                            <DashboardAdvertise></DashboardAdvertise>
+                            <DashboardAdvertise ></DashboardAdvertise>
                         </div>
                     </ul>
 

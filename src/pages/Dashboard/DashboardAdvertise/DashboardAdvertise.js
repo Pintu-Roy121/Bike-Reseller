@@ -30,16 +30,19 @@ const DashboardAdvertise = () => {
                                 key={adData._id}
                             >
                                 {
-                                    adData?.sold ||
-                                    <SwiperSlide>
-                                        <div>
-                                            <img className='mt-12 object-contain' src={adData.img} alt='' />
-                                            <div className='text-violet-800'>
-                                                <p className="text-lg font-bold">{adData.model}</p>
-                                                <p className="-mt-2 text-lg font-bold">{adData.brand_name}</p>
+                                    adData?.sold ?
+                                        <></>
+                                        :
+                                        <SwiperSlide>
+                                            <div>
+                                                <img className='mt-12 object-contain' src={adData.img} alt='' />
+                                                <div className='text-violet-800'>
+                                                    <p className="text-lg font-bold">{adData.model}</p>
+                                                    <p className="-mt-2 text-lg font-bold">{adData.brand_name}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </SwiperSlide>
+                                        </SwiperSlide>
+
                                 }
                             </div>)
                     }

@@ -16,6 +16,14 @@ const Reported = () => {
             })
     }, [])
 
+    const handleDelete = (id) => {
+        console.log(id);
+    }
+
+    const handleReport = (id) => {
+        console.log(id);
+    }
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -25,7 +33,8 @@ const Reported = () => {
                         <tr>
                             <th>sl</th>
                             <th>Image</th>
-                            <th>car model</th>
+                            <th>Status</th>
+                            <th>Bike Model</th>
                             <th>seller_Name</th>
                             <th>Price</th>
                             <th>Action</th>
@@ -44,13 +53,18 @@ const Reported = () => {
                                                 <img src={product.img} alt='/' />
                                             </div>
                                         </div>
-                                        <FcCancel className='text-3xl font-bold' />
+                                        <FcCancel className='text-4xl font-bold' />
+
                                     </th>
-                                    <td>{product.name}</td>
+                                    <td className='text-lg font-bold text-red-600'>Reported</td>
+                                    <td className='text-lg font-bold '>{product.model}</td>
                                     <td>{product.seller_name}</td>
                                     <td>{product.resale_price} $</td>
-                                    <td>
-                                        <button className='btn btn-sm btn-error'>Delete Product</button>
+                                    <td >
+                                        <div className='flex flex-col gap-3'>
+                                            <button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-error'>Delete Product</button>
+                                            <button onClick={() => handleReport(product._id)} className='btn btn-sm btn-success'>Cancle Report</button>
+                                        </div>
                                     </td>
                                 </tr>)
                         }

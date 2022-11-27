@@ -10,7 +10,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 const Payment = () => {
     const booking = useLoaderData()
     const { product, price, location, name, phone, _id } = booking;
-    // console.log(booking);
+
 
     return (
         <div className='w-3/4 mx-auto my-5 '>

@@ -1,9 +1,28 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FcApproval } from "react-icons/fc";
 
 const Product = ({ product, setSelectedProduct }) => {
 
-    const { model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
+    const { _id, model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
+
+
+    const handleReport = (id) => {
+
+        fetch(`http://localhost:5000/reported/products/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    toast.error('Product Report Successful !!!')
+                }
+            })
+
+    }
 
 
     return (
@@ -31,10 +50,11 @@ const Product = ({ product, setSelectedProduct }) => {
                             <p>Original Price:$ {original_price}</p>
                         </div>
                     </div>
-                    <div className="card-actions justify-end">
+                    <div className="card-actions justify-between items-center">
                         {/* <Link to={`/booking/${_id}`}>
                             <button className="btn btn-primary btn-sm">Booking</button>
                         </Link> */}
+                        <button onClick={() => handleReport(_id)} className='btn btn-xs btn-outline btn-error'>Report</button>
 
                         <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">booking</label>
                     </div>

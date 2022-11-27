@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const CheckOutForm = ({ booking }) => {
@@ -9,7 +10,8 @@ const CheckOutForm = ({ booking }) => {
     const [success, setSuccess] = useState();
     const [transectionId, setTransectionId] = useState();
     const stripe = useStripe();
-    const elements = useElements()
+    const elements = useElements();
+    // const navigate = useNavigate();
 
     const { price, name, email, _id, productid } = booking;
 
@@ -32,7 +34,6 @@ const CheckOutForm = ({ booking }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(booking);
         if (!stripe || !elements) {
             return;
         }
@@ -84,7 +85,6 @@ const CheckOutForm = ({ booking }) => {
                 bookingId: _id,
                 productid
             }
-            console.log(payment);
 
             fetch('http://localhost:5000/payments', {
                 method: 'POST',
@@ -101,6 +101,7 @@ const CheckOutForm = ({ booking }) => {
                             'Payment Success',
                             'success'
                         )
+                        // navigate('/dashboard/myorders')
                     }
                 })
 

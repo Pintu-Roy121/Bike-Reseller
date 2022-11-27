@@ -26,8 +26,8 @@ const Advertise = () => {
                 <img className='absolute z-50 -top-24 -rotate-12' src={offer} alt="" />
                 <Swiper pagination={true} modules={[Pagination]}>
                     {
-                        advertiseData.map((adproduct, i) =>
-                            <div key={i}>
+                        advertiseData.map((adproduct) =>
+                            <div key={adproduct._id}>
                                 {
                                     adproduct?.sold ?
                                         <></>

@@ -26,7 +26,8 @@ const AllSellers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    toast.success('seller verified')
+                    toast.success('seller verified');
+                    refetch();
                 }
             })
     }
@@ -58,6 +59,7 @@ const AllSellers = () => {
                         <tr>
                             <th>sl</th>
                             <th>Name</th>
+                            <th>Status</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Action</th>
@@ -77,6 +79,11 @@ const AllSellers = () => {
                                                 seller?.verify && <FcApproval />
                                             }
                                         </span>
+                                    </td>
+                                    <td>
+                                        {
+                                            seller?.verify && <span className='font-black text-success'>Verified</span>
+                                        }
                                     </td>
                                     <td>{seller.email}</td>
                                     <td>{seller.role}</td>

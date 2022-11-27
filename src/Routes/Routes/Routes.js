@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/reported',
-                element: <Reported></Reported>
+                element: <AdminRutes><Reported></Reported></AdminRutes>
             },
             {
                 path: '/dashboard/addproduct',
