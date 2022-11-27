@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FcApproval } from "react-icons/fc";
+import { AuthContext } from '../../contexts/AuthProvider';
+import useAdmin from '../../hooks/useAdmin/useAdmin';
+import useBuyer from '../../hooks/useBuyer/useBuyer';
 
 const Product = ({ product, setSelectedProduct }) => {
+    // const [isBuyer] = useBuyer(user?.email)
+    const { user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email);
+    const [isBuyer] = useBuyer(user?.email)
 
-    const { _id, model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
+    const { _id, date, model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
 
 
     const handleReport = (id) => {
@@ -33,12 +40,18 @@ const Product = ({ product, setSelectedProduct }) => {
                     <h2 className="card-title text-2xl font-bold">{model}</h2>
                     {
                         user_verify ?
-                            <span className='flex items-center gap-2'>
-                                <h2 className='text-xl font-bold'>{seller_name}</h2>
-                                <FcApproval className='text-xl font-bold' />
+                            <span className='flex flex-col'>
+                                <div className='flex items-center gap-2'>
+                                    <h2 className='text-xl font-bold'>{seller_name}</h2>
+                                    <FcApproval className='text-xl font-bold' />
+                                </div>
+                                <p className='text-sm text-info font-bold'>Date:{date}</p>
                             </span>
                             :
-                            <h2 className='text-xl font-bold'>{seller_name}</h2>
+                            <div className='flex flex-col'>
+                                <h2 className='text-xl font-bold'>{seller_name}</h2>
+                                <p className='text-sm text-info font-bold'>Date:{date}</p>
+                            </div>
                     }
                     <div className='flex justify-between text-lg font-semibold'>
                         <div>
@@ -46,17 +59,24 @@ const Product = ({ product, setSelectedProduct }) => {
                             <p>Used: {yearsof_use} years</p>
                         </div>
                         <div className='text-right'>
-                            <p>Price:$ {resale_price}</p>
-                            <p>Original Price:$ {original_price}</p>
+                            <p>Price:$ <span className='text-orange-600 font-bold'>$ {resale_price}</span></p>
+                            <p>Original Price:<span className='text-error font-bold line-through decoration-2'>$ {original_price}</span></p>
                         </div>
                     </div>
-                    <div className="card-actions justify-between items-center">
+                    <div className={`card-actions justify-end ${user && 'justify-between items-center'}`}>
                         {/* <Link to={`/booking/${_id}`}>
                             <button className="btn btn-primary btn-sm">Booking</button>
                         </Link> */}
-                        <button onClick={() => handleReport(_id)} className='btn btn-xs btn-outline btn-error'>Report</button>
+                        <div className='flex gap-2'>
+                            {
+                                isAdmin && <button onClick={() => handleReport(_id)} className='btn btn-xs btn-error'>Delete</button>
+                            }
+                            {
+                                isBuyer && <button onClick={() => handleReport(_id)} className='btn btn-xs btn-outline btn-error'>Report</button>
+                            }
+                        </div>
 
-                        <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">booking</label>
+                        <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">book now</label>
                     </div>
                 </div>
             </div>

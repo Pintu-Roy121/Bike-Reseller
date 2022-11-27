@@ -19,35 +19,41 @@ const DashboardAdvertise = () => {
     }, [])
 
     return (
-        <div className=' mx-auto text-center'>
-            <h1 className='text-2xl font-bold underline text-primary'>Dashboard Advertising:</h1>
-            <div className='relative'>
-                <img className='absolute w-24 z-50 -rotate-12' src={offer} alt="" />
-                <Swiper pagination={true} modules={[Pagination]}>
-                    {
-                        adDatas.map((adData) =>
-                            <div
-                                key={adData._id}
-                            >
-                                {
-                                    adData?.sold ?
-                                        <></>
-                                        :
-                                        <SwiperSlide>
-                                            <div>
-                                                <img className='mt-12 w-full h-52 object-cover' src={adData.img} alt='' />
-                                                <div className='text-violet-800'>
-                                                    <p className="text-lg font-bold">{adData.model}</p>
-                                                    <p className="-mt-2 text-lg font-bold">{adData.brand_name}</p>
-                                                </div>
-                                            </div>
-                                        </SwiperSlide>
+        <div>
+            {
+                adDatas.length !== 0 &&
 
-                                }
-                            </div>)
-                    }
-                </Swiper>
-            </div>
+                <div className=' mx-auto text-center'>
+                    <h1 className='text-2xl font-bold underline text-primary'>Dashboard Advertising:</h1>
+                    <div className='relative'>
+                        <img className='absolute w-24 z-50 -rotate-12' src={offer} alt="" />
+                        <Swiper pagination={true} modules={[Pagination]}>
+                            {
+                                adDatas.map((adData) =>
+                                    <div
+                                        key={adData._id}
+                                    >
+                                        {
+                                            adData?.sold ?
+                                                <></>
+                                                :
+                                                <SwiperSlide>
+                                                    <div>
+                                                        <img className='mt-12 w-full h-52 object-cover' src={adData.img} alt='' />
+                                                        <div className='text-violet-800'>
+                                                            <p className="text-lg font-bold">{adData.model}</p>
+                                                            <p className="-mt-2 text-lg font-bold">{adData.brand_name}</p>
+                                                        </div>
+                                                    </div>
+                                                </SwiperSlide>
+
+                                        }
+                                    </div>)
+                            }
+                        </Swiper>
+                    </div>
+                </div>
+            }
         </div>
     );
 };

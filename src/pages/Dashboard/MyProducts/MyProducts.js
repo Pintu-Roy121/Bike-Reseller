@@ -52,7 +52,6 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = (product) => {
-        console.log(product);
         fetch('http://localhost:5000/advertise', {
             method: 'POST',
             headers: {

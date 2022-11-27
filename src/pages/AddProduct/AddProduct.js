@@ -32,7 +32,6 @@ const AddProduct = () => {
         // set time when add the product....................................
         const date = new Date();
         const selectdate = format(date, 'PP');
-        console.log(selectdate);
 
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkey}`
 
