@@ -4,11 +4,13 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
 import { FaCheck, FaTrashAlt } from "react-icons/fa";
+import useTitle from '../../../hooks/useTitle/useTitle';
 
 const MyProducts = () => {
     const { user, loading } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
     const [refresh, setRefresh] = useState(true);
+    useTitle('Myproducts-Dashboard')
 
 
     useEffect(() => {

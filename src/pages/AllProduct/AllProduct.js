@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle/useTitle';
 import Loading from '../../Shared/Loading/Loading';
 import BookingModal from '../BookingModal/BookingModal';
 import Product from '../Product/Product';
 
 const AllProduct = () => {
     const { loading } = useContext(AuthContext);
-    const [selectProduct, setSelectedProduct] = useState(null)
+    const [selectProduct, setSelectedProduct] = useState(null);
+    useTitle('All-Product')
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],

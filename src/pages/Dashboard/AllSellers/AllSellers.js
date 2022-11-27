@@ -1,11 +1,13 @@
 
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FcApproval } from "react-icons/fc";
+import useTitle from '../../../hooks/useTitle/useTitle';
 
 const AllSellers = () => {
+    useTitle('Sellers-Dashboard')
+
     const { data: allsellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -92,13 +94,13 @@ const AllSellers = () => {
                                     <td>{seller.role}</td>
                                     <td>
                                         <div className='flex flex-col gap-2'>
-                                            <button onClick={() => handleDelete(seller._id)} className='w-32 hover:bg-[#f35252] btn btn-sm btn-error shadow-lg shadow-error mr-2'>Delete</button>
+                                            <button onClick={() => handleDelete(seller._id)} className='w-32 hover:bg-[#f35252] btn btn-sm btn-error shadow-md shadow-error mr-2'>Delete</button>
                                             {
                                                 seller?.verify ?
                                                     <>
                                                     </>
                                                     :
-                                                    <button onClick={() => handleVerify(seller._id)} className='w-32 hover:bg-[#39e092] btn btn-sm btn-success shadow-lg shadow-green-500'>verify</button>
+                                                    <button onClick={() => handleVerify(seller._id)} className='w-32 hover:bg-[#39e092] btn btn-sm btn-success shadow-md shadow-green-500'>verify</button>
                                             }
                                         </div>
                                     </td>

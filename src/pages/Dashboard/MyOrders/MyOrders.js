@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle/useTitle';
 import Loading from '../../../Shared/Loading/Loading';
 import Orders from '../Orders/Orders';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
+    useTitle('MyOrders-Dasboard');
 
     const { data: bookings = [], isLoading, refetch } = useQuery({
         queryKey: ['bookings', user?.email],

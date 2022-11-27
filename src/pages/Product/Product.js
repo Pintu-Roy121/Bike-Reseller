@@ -55,12 +55,12 @@ const Product = ({ product, setSelectedProduct }) => {
                     }
                     <div className='flex justify-between text-lg font-semibold'>
                         <div>
-                            <p>Location: {location}</p>
-                            <p>Used: {yearsof_use} years</p>
+                            <p className='text-base'>Location: {location}</p>
+                            <p className='text-base'>Used: {yearsof_use} years</p>
                         </div>
                         <div className='text-right'>
-                            <p>Price:$ <span className='text-info text-lg font-bold'>$ {resale_price}</span></p>
-                            <p>Original Price:<span className='text-error font-bold line-through decoration-2'>$ {original_price}</span></p>
+                            <p className='text-base'>Price:$ <span className='text-info text-lg font-bold'>$ {resale_price}</span></p>
+                            <p className='text-base'>Original Price:<span className='text-error font-bold line-through decoration-2'>$ {original_price}</span></p>
                         </div>
                     </div>
                     <div className={`card-actions mt-4 justify-end ${user && 'justify-between items-center'}`}>

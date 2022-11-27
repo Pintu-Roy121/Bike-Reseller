@@ -6,11 +6,13 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle/useTitle';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    useTitle('AddProduct-Dashboard');
 
     const { data: loginuser = {} } = useQuery({
         queryKey: ['user'],

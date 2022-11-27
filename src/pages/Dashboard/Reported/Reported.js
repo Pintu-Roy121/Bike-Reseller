@@ -2,22 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FcCancel } from "react-icons/fc";
 import Swal from 'sweetalert2';
+import useTitle from '../../../hooks/useTitle/useTitle';
 
 const Reported = () => {
     const [reported, setReported] = useState([]);
     const [refresh, setRefresh] = useState(true);
+    useTitle('Reported-Dashboard');
 
     useEffect(() => {
-        // fetch('http://localhost:5000/reported/products', {
-        //     headers: {
-        //         authorization: `bearer ${localStorage.getItem('accessToken')}`
-        //     }
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setReported(data);
-        //     })
-
         axios.get('http://localhost:5000/reported/products', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -4,15 +4,16 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
 // import useBuyer from '../../hooks/useBuyer/useBuyer';
 import useSeller from '../../hooks/useSeller/useSeller';
+import useTitle from '../../hooks/useTitle/useTitle';
 import DashboardAdvertise from '../../pages/Dashboard/DashboardAdvertise/DashboardAdvertise';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    // const [isBuyer] = useBuyer(user?.email);
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email);
+    useTitle('Dashboard')
 
     return (
         <div>

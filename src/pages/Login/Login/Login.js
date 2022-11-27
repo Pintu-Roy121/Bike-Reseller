@@ -3,15 +3,17 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle/useTitle';
 import useToken from '../../../hooks/useToken/useToken';
 
 const Login = () => {
     const { Login, LoginWithGoogle } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [error, setError] = useState('');
-    const [loginEmail, setLoginEmail] = useState('')
+    const [loginEmail, setLoginEmail] = useState('');
     const [token] = useToken(loginEmail);
     const navigate = useNavigate();
+    useTitle('Login')
 
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";

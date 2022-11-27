@@ -23,7 +23,7 @@ const DashboardAdvertise = () => {
             {
                 adDatas.length !== 0 &&
 
-                <div className=' mx-auto text-center'>
+                <div className='mx-auto mt-7 text-center'>
                     <h1 className='text-2xl font-bold underline text-primary'>Dashboard Advertising:</h1>
                     <div className='relative'>
                         <img className='absolute w-24 z-50 -rotate-12' src={offer} alt="" />

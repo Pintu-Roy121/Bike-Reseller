@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../hooks/useTitle/useTitle';
 
 const AllBuyers = () => {
     const [allBuyers, setAllBuyers] = useState([]);
     const [refresh, setRefresh] = useState(false);
+    useTitle('Buyers-Dashboard')
 
     useEffect(() => {
         fetch('http://localhost:5000/users/buyers', {
@@ -60,7 +62,7 @@ const AllBuyers = () => {
                                     <td>{buyer.email}</td>
                                     <td>{buyer.role}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(buyer._id)} className='w-32 hover:bg-[#f35252] btn btn-sm btn-error shadow-lg shadow-error mr-2'>Delete buyer</button>
+                                        <button onClick={() => handleDelete(buyer._id)} className='w-32 hover:bg-[#f35252] btn btn-sm btn-error shadow-md shadow-error mr-2'>Delete buyer</button>
                                     </td>
                                 </tr>)
                         }

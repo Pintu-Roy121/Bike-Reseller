@@ -2,15 +2,17 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle/useTitle';
 import useToken from '../../../hooks/useToken/useToken';
 
 const Signup = () => {
     const { LoginWithGoogle } = useContext(AuthContext);
-    const { createUser, updateUser } = useContext(AuthContext)
+    const { createUser, updateUser } = useContext(AuthContext);
     const [error, setError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
+    useTitle('Signup')
 
     if (token) {
         navigate('/')

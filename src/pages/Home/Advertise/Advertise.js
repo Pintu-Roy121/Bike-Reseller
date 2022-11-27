@@ -24,7 +24,7 @@ const Advertise = () => {
             {
                 advertiseData.length !== 0 &&
 
-                <div className='w-1/2 mx-auto text-center my-32 '>
+                <div className='w-full md:w-4/5 lg:w-1/2 mx-auto text-center my-32 '>
                     <h1 className='text-4xl font-bold underline my-10'>Advertised Product</h1>
                     <div className='relative mt-16'>
                         <img className='absolute z-50 -top-24 -rotate-12' src={offer} alt="" />
@@ -43,7 +43,7 @@ const Advertise = () => {
                             className="mySwiper"
                         >
                             {
-                                advertiseData.map((adproduct) =>
+                                advertiseData.map((adproduct, index) =>
                                     <div key={adproduct._id}>
                                         <SwiperSlide>
                                             <div>

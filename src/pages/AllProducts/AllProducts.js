@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle/useTitle';
 import PrivateRoutes from '../../Routes/PrivateRoutes/PrivateRoutes';
 import Loading from '../../Shared/Loading/Loading';
 import BookingModal from '../BookingModal/BookingModal';
@@ -10,8 +11,8 @@ import Product from '../Product/Product';
 const AllProducts = () => {
     const { brand } = useParams();
     const { loading } = useContext(AuthContext);
-    // const products = useLoaderData();
-    const [selectProduct, setSelectedProduct] = useState(null)
+    const [selectProduct, setSelectedProduct] = useState(null);
+    useTitle('AllProduct')
 
 
     const { data: products = [], refetch } = useQuery({
