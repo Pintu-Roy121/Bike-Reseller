@@ -60,7 +60,7 @@ const AllBuyers = () => {
                                     <td>{buyer.email}</td>
                                     <td>{buyer.role}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(buyer._id)} className='btn btn-sm btn-error'>Delete buyer</button>
+                                        <button onClick={() => handleDelete(buyer._id)} className='w-32 hover:bg-[#f35252] btn btn-sm btn-error shadow-lg shadow-error mr-2'>Delete buyer</button>
                                     </td>
                                 </tr>)
                         }

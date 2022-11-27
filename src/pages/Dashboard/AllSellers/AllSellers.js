@@ -22,6 +22,9 @@ const AllSellers = () => {
     const handleVerify = (id) => {
         fetch(`http://localhost:5000/sellers/${id}`, {
             method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -88,14 +91,16 @@ const AllSellers = () => {
                                     <td>{seller.email}</td>
                                     <td>{seller.role}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(seller._id)} className='btn btn-sm btn-error mr-2'>Delete seller</button>
-                                        {
-                                            seller?.verify ?
-                                                <>
-                                                </>
-                                                :
-                                                <button onClick={() => handleVerify(seller._id)} className='btn btn-sm btn-info'>verify user</button>
-                                        }
+                                        <div className='flex flex-col gap-2'>
+                                            <button onClick={() => handleDelete(seller._id)} className='w-32 hover:bg-[#f35252] btn btn-sm btn-error shadow-lg shadow-error mr-2'>Delete</button>
+                                            {
+                                                seller?.verify ?
+                                                    <>
+                                                    </>
+                                                    :
+                                                    <button onClick={() => handleVerify(seller._id)} className='w-32 hover:bg-[#39e092] btn btn-sm btn-success shadow-lg shadow-green-500'>verify</button>
+                                            }
+                                        </div>
                                     </td>
                                 </tr>)
                         }

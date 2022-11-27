@@ -40,11 +40,11 @@ const Orders = ({ booked, refetch }) => {
                 <h2 className="card-title">{product}</h2>
                 <p className='font-semibold'>Price:$ {price}</p>
                 <div className="card-actions justify-between mt-4">
-                    <button onClick={() => handleDelete(_id)} className='btn btn-sm btn-error'>delete</button>
+                    <button onClick={() => handleDelete(_id)} className='hover:bg-[#f35252] btn btn-sm btn-error shadow-lg shadow-error mr-2'>delete</button>
                     {
                         booked?.price && !booked?.paid &&
                         <Link to={`/dashboard/payment/${_id}`}>
-                            <button className='btn btn-sm btn-info px-7'>pay</button>
+                            <button className='btn btn-sm shadow-lg shadow-info btn-info px-7'>pay</button>
                         </Link>
                     }
                     {

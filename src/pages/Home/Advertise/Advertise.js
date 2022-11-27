@@ -35,7 +35,6 @@ const Advertise = () => {
                                         <SwiperSlide>
                                             <div>
                                                 <img className='w-full h-96 object-contain' src={adproduct.img} alt='' />
-                                                <p className="text-2xl font-bold">{adproduct._id}</p>
                                                 <p className="text-2xl font-bold">{adproduct.model}</p>
                                                 <p className="text-3xl font-bold">{adproduct.brand_name}</p>
                                             </div>
