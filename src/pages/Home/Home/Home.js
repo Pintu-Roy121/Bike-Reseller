@@ -5,7 +5,6 @@ import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
 import PaymentMethods from '../PaymentMethods/PaymentMethods';
 import ReadyToJoin from '../ReadyToJoin/ReadyToJoin';
-
 const Home = () => {
 
 

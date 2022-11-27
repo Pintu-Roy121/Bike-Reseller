@@ -22,6 +22,7 @@ const AllProduct = () => {
         return <Loading></Loading>
     }
 
+
     return (
         <div className='w-11/12 mx-auto my-10'>
             <h1 className='text-4xl my-8 font-bold underline text-center'>Total Products:{products.length}</h1>

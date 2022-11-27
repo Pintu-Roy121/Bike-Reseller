@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FcCancel } from "react-icons/fc";
 import Swal from 'sweetalert2';
@@ -7,15 +8,25 @@ const Reported = () => {
     const [refresh, setRefresh] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/reported/products', {
+        // fetch('http://localhost:5000/reported/products', {
+        //     headers: {
+        //         authorization: `bearer ${localStorage.getItem('accessToken')}`
+        //     }
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setReported(data);
+        //     })
+
+        axios.get('http://localhost:5000/reported/products', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
             .then(data => {
-                setReported(data);
+                setReported(data.data)
             })
+
     }, [refresh])
 
     const handleDelete = (id) => {
@@ -45,7 +56,7 @@ const Reported = () => {
     return (
         <div>
             <div className="overflow-x-auto">
-                <h1 className='text-2xl mt-5 underline font-bold text-center'>Toal Repordtd Items: {reported.length}</h1>
+                <h1 className='text-2xl mt-5 underline font-bold text-center'>Toal Reported Items: {reported.length}</h1>
                 <table className="table w-full my-12">
                     <thead>
                         <tr>

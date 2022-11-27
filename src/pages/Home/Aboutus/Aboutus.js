@@ -4,8 +4,8 @@ import backgroundImage from '../../../assets/Banner.jpg';
 
 const Aboutus = () => {
     return (
-        <div className='bg-slate-500 bg-cover bg-fixed' style={{ backgroundImage: `url(${backgroundImage})`, opacity: '800' }}>
-            <div className='bg-gray-300 py-10 bg-opacity-30'>
+        <div className='bg-slate-500 bg-cover bg-fixed' style={{ backgroundImage: `url(${backgroundImage})` }}>
+            <div className='bg-gray-300 py-10 bg-opacity-0'>
                 <div className='w-11/12 mx-auto my-16 text-center'>
                     <div className='text-white'>
                         <h1 className='text-5xl font-bold underline mb-5'>About us</h1>

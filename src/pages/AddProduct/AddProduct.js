@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
@@ -34,7 +35,6 @@ const AddProduct = () => {
         const selectdate = format(date, 'PP');
 
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkey}`
-
         fetch(url, {
             method: 'POST',
             body: formData
@@ -60,17 +60,35 @@ const AddProduct = () => {
                         date: selectdate
 
                     }
-                    fetch('http://localhost:5000/product', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                            authorization: `bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(product)
-                    })
-                        .then(res => res.json())
+                    // fetch('http://localhost:5000/product', {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'content-type': 'application/json',
+                    //         authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    //     },
+                    //     body: JSON.stringify(product)
+                    // })
+                    //     .then(res => res.json())
+                    //     .then(data => {
+                    //         if (data.acknowledged) {
+                    //             navigate('/dashboard/myproducts')
+                    //             Swal.fire(
+                    //                 'Successful!',
+                    //                 'Product add Successful!',
+                    //                 'success'
+                    //             )
+                    //         }
+                    //     })
+
+                    axios.post('http://localhost:5000/product', product,
+                        {
+                            headers: {
+                                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                            }
+                        })
                         .then(data => {
-                            if (data.acknowledged) {
+                            console.log(data);
+                            if (data.data.acknowledged) {
                                 navigate('/dashboard/myproducts')
                                 Swal.fire(
                                     'Successful!',
@@ -90,7 +108,7 @@ const AddProduct = () => {
                 <div className='grid grid-cols-2 gap-2 font-semibold'>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Brand:</span>
+                            <span className="label-text text-base font-semibold">Select Your Brand:</span>
                         </label>
                         <select
                             {...register("brand_name", {
@@ -110,7 +128,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-base font-semibold">Product Model:</span>
+                            <span className="label-text text-base font-semibold">Bike Model:</span>
                         </label>
                         <input type="text"
                             {...register("model", {

@@ -1,5 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FcApproval } from "react-icons/fc";
@@ -17,7 +18,6 @@ const AllSellers = () => {
             return data;
         }
     })
-
 
     const handleVerify = (id) => {
         fetch(`http://localhost:5000/sellers/${id}`, {
