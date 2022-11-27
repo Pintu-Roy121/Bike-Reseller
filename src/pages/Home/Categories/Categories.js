@@ -7,16 +7,6 @@ import Category from '../Category/Category';
 const Categories = () => {
     const { loading } = useContext(AuthContext)
 
-    // const [Categories, setCategoris] = useState([])
-
-    // useEffect(() => {
-    //     fetch('productsCategory.json')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setCategoris(data);
-    //         })
-    // }, [])
-
     const { data: Categories = [] } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {

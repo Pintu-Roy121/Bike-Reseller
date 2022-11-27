@@ -23,8 +23,6 @@ const AddProduct = () => {
 
     const imageHostkey = process.env.REACT_APP_Imagebb_key;
 
-
-
     const AddProduct = (data) => {
         const formData = new FormData();
         const image = data.image[0]
@@ -33,6 +31,17 @@ const AddProduct = () => {
         // set time when add the product....................................
         const date = new Date();
         const selectdate = format(date, 'PP');
+
+        // set exact time of review..............
+        let time_ob = new Date();
+        let hours = time_ob.getHours();
+        let minutes = time_ob.getMinutes();
+        let seconds = time_ob.getSeconds();
+        const time = {
+            hours,
+            minutes,
+            seconds
+        }
 
         const url = `https://api.imgbb.com/1/upload?key=${imageHostkey}`
         fetch(url, {
@@ -57,7 +66,8 @@ const AddProduct = () => {
                         years: data.years,
                         yearsof_use: data.yearsof_use,
                         user_verify: loginuser.verify,
-                        date: selectdate
+                        date: selectdate,
+                        time
 
                     }
                     // fetch('http://localhost:5000/product', {
@@ -87,7 +97,6 @@ const AddProduct = () => {
                             }
                         })
                         .then(data => {
-                            console.log(data);
                             if (data.data.acknowledged) {
                                 navigate('/dashboard/myproducts')
                                 Swal.fire(

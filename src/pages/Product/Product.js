@@ -41,9 +41,9 @@ const Product = ({ product, setSelectedProduct }) => {
                     {
                         user_verify ?
                             <span className='flex flex-col'>
-                                <div className='flex items-center gap-2'>
+                                <div className='flex items-center gap-1'>
                                     <h2 className='text-xl font-bold'>{seller_name}</h2>
-                                    <FcApproval className='text-xl font-bold' />
+                                    <FcApproval className='text-2xl font-bold' />
                                 </div>
                                 <p className='text-sm text-info font-bold'>Date:{date}</p>
                             </span>
@@ -59,23 +59,20 @@ const Product = ({ product, setSelectedProduct }) => {
                             <p>Used: {yearsof_use} years</p>
                         </div>
                         <div className='text-right'>
-                            <p>Price:$ <span className='text-orange-600 font-bold'>$ {resale_price}</span></p>
+                            <p>Price:$ <span className='text-info text-lg font-bold'>$ {resale_price}</span></p>
                             <p>Original Price:<span className='text-error font-bold line-through decoration-2'>$ {original_price}</span></p>
                         </div>
                     </div>
-                    <div className={`card-actions justify-end ${user && 'justify-between items-center'}`}>
-                        {/* <Link to={`/booking/${_id}`}>
-                            <button className="btn btn-primary btn-sm">Booking</button>
-                        </Link> */}
+                    <div className={`card-actions mt-4 justify-end ${user && 'justify-between items-center'}`}>
+
                         <div className='flex gap-2'>
                             {
-                                isAdmin && <button onClick={() => handleReport(_id)} className='btn btn-xs btn-error'>Delete</button>
-                            }
-                            {
-                                isBuyer && <button onClick={() => handleReport(_id)} className='btn btn-xs btn-outline btn-error'>Report</button>
+                                !isAdmin ?
+                                    isBuyer && <button onClick={() => handleReport(_id)} className='btn btn-sm btn-outline btn-error'>Report</button>
+                                    :
+                                    <button onClick={() => handleReport(_id)} className='btn btn-sm btn-error'>Delete</button>
                             }
                         </div>
-
                         <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">book now</label>
                     </div>
                 </div>
