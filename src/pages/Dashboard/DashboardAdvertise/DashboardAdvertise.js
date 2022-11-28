@@ -40,8 +40,8 @@ const DashboardAdvertise = () => {
                             className="mySwiper"
                         >
                             {
-                                adDatas.map((adData) =>
-                                    <div key={adData?._id} className='rounded-lg'>
+                                adDatas.map((adData, index) =>
+                                    <div key={index} className='rounded-lg'>
                                         <SwiperSlide>
                                             <div>
                                                 <img className='mt-12 w-full h-52 object-cover' src={adData?.img} alt='' />
