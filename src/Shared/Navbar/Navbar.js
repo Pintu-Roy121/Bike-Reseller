@@ -23,24 +23,25 @@ const Navbar = () => {
             })
     }
 
-    const menuItems = <>
+    const menuItems = <div>
         <li className='font-semibold'>
             <Link to='/'> Home</Link>
-            <Link to='/products'> All Product</Link>
-            <Link to='/blog'> Blog</Link>
+            <Link to='/products'>Shop</Link>
+            <Link to='/brands'>Brands</Link>
+            <Link to='/blog'>Blog</Link>
             {
                 user?.uid ?
                     <>
                         <Link to='/dashboard'>Dashboard</Link>
-                        <Link>{user?.email}</Link>
+                        {/* <Link>{user?.email}</Link> */}
                         <Link>{user?.displayName}</Link>
-                        <Link onClick={handleLogout} to='/login'>LogOut</Link>
+                        <Link onClick={handleLogout} to='/login'><button className='btn btn-sm btn-error'>LogOut</button></Link>
                     </>
                     :
                     <Link to='/login'>Login</Link>
             }
         </li>
-    </>
+    </div>
 
     return (
         <div className='bg-base-100 w-full sticky top-0 z-50'>

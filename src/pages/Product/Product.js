@@ -3,19 +3,17 @@ import toast from 'react-hot-toast';
 import { FcApproval } from "react-icons/fc";
 import { AuthContext } from '../../contexts/AuthProvider';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
-import useBuyer from '../../hooks/useBuyer/useBuyer';
+import Loading from '../../Shared/Loading/Loading';
 
 const Product = ({ product, setSelectedProduct }) => {
     // const [isBuyer] = useBuyer(user?.email)
     const { user } = useContext(AuthContext);
-    const [isAdmin] = useAdmin(user?.email);
-    const [isBuyer] = useBuyer(user?.email)
+    const [isAdmin, isAdminLoading] = useAdmin(user?.email);
 
     const { _id, date, model, img, location, seller_name, resale_price, original_price, yearsof_use, user_verify } = product;
 
 
     const handleReport = (id) => {
-
         fetch(`https://bike-resell-shop-server.vercel.app/reported/products/${id}`, {
             method: 'PUT',
             headers: {
@@ -30,14 +28,19 @@ const Product = ({ product, setSelectedProduct }) => {
             })
 
     }
-
+    if (isAdminLoading) {
+        <Loading></Loading>
+    }
 
     return (
         <div>
             <div className="card card-compact bg-base-100 shadow-xl">
-                <figure><img className='h-72 w-full' src={img} alt="Shoes" /></figure>
+                <figure><img className='h-72 object-cover w-full' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title text-2xl font-bold">{model}</h2>
+                    <div className='flex justify-between'>
+                        <h2 className="card-title text-2xl font-bold">{model}</h2>
+                        <button onClick={() => handleReport(_id)} className='btn btn-xs btn-outline btn-info'>Report</button>
+                    </div>
                     {
                         user_verify ?
                             <span className='flex flex-col'>
@@ -64,16 +67,26 @@ const Product = ({ product, setSelectedProduct }) => {
                         </div>
                     </div>
                     <div className={`card-actions mt-4 justify-end ${user && 'justify-between items-center'}`}>
-
                         <div className='flex gap-2'>
                             {
-                                !isAdmin ?
+                                isAdmin &&
+                                <button onClick={() => handleReport(_id)} className='btn btn-sm btn-error'>Delete</button>
+                            }
+                        </div>
+                        {
+                            product?.sold ?
+                                <button className='text-success font-bold text-xl'>Out of Stock</button>
+                                :
+                                <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">book now</label>
+                        }
+                        {/* {
+                                isAdmin ?
                                     isBuyer && <button onClick={() => handleReport(_id)} className='btn btn-sm btn-outline btn-error'>Report</button>
                                     :
                                     <button onClick={() => handleReport(_id)} className='btn btn-sm btn-error'>Delete</button>
                             }
                         </div>
-                        <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">book now</label>
+                        <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">book now</label> */}
                     </div>
                 </div>
             </div>

@@ -35,7 +35,7 @@ const Orders = ({ booked, refetch }) => {
 
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure><img className='h-52 w-full' src={img} alt="Shoes" /></figure>
+            <figure><img className='h-52 object-cover w-full' src={img} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{product}</h2>
                 <p className='font-semibold'>Price:$ {price}</p>

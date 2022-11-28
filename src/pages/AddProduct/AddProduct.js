@@ -113,10 +113,10 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='w-11/12 mx-auto my-8 bg-slate-200 p-16 rounded-xl'>
+        <div className='w-full md:w-11/12 mx-auto my-8 bg-slate-200 p-16 rounded-xl'>
             <div className="text-3xl font-bold text-center underline">Add A Product</div>
             <form onSubmit={handleSubmit(AddProduct)}>
-                <div className='grid grid-cols-2 gap-2 font-semibold'>
+                <div className='grid md:grid-cols-2 gap-2 font-semibold'>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text text-base font-semibold">Select Your Brand:</span>

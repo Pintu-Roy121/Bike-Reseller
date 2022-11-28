@@ -13,6 +13,7 @@ import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../pages/Dashboard/Payment/Payment";
 import Reported from "../../pages/Dashboard/Reported/Reported";
+import Categories from "../../pages/Home/Categories/Categories";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login/Login";
 import Signup from "../../pages/Login/Signup/Signup";
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
             {
                 path: '/booking/:id',
                 element: <PrivateRoutes><Booking></Booking></PrivateRoutes>
+            },
+            {
+                path: '/brands',
+                element: <Categories></Categories>
             }
         ]
     },

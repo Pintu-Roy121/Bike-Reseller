@@ -73,9 +73,9 @@ const Login = () => {
 
 
     return (
-        <div className='my-24 bg-slate-200 w-3/4 mx-auto p-24 rounded-xl'>
-            <h1 className='text-4xl text-center font-bold'>Login to your Account</h1>
-            <form className='w-3/4 mx-auto' onSubmit={handleSubmit(handleLogin)}>
+        <div className='my-24 bg-slate-200 w-full md:w-3/4 mx-auto p-16 md:p-24 rounded-xl'>
+            <h1 className='text-4xl text-center font-bold'>Login</h1>
+            <form className='w-full md:w-3/4 mx-auto' onSubmit={handleSubmit(handleLogin)}>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-base font-semibold">Email:</span>

@@ -16,13 +16,11 @@ const DashboardAdvertise = () => {
             .then(data => {
                 setAdDatas(data)
             })
-    }, [])
-
+    }, []);
     return (
         <div>
             {
                 adDatas.length !== 0 &&
-
                 <div className='mx-auto mt-7 text-center'>
                     <h1 className='text-2xl font-bold underline text-primary'>Dashboard Advertising:</h1>
                     <div className='relative'>
@@ -43,13 +41,13 @@ const DashboardAdvertise = () => {
                         >
                             {
                                 adDatas.map((adData) =>
-                                    <div key={adData._id} className='rounded-lg'>
+                                    <div key={adData?._id} className='rounded-lg'>
                                         <SwiperSlide>
                                             <div>
-                                                <img className='mt-12 w-full h-52 object-cover' src={adData.img} alt='' />
+                                                <img className='mt-12 w-full h-52 object-cover' src={adData?.img} alt='' />
                                                 <div className='text-violet-800'>
-                                                    <p className="text-lg font-bold">{adData.model}</p>
-                                                    <p className="-mt-2 text-lg font-bold">{adData.brand_name}</p>
+                                                    <p className="text-lg font-bold">{adData?.model}</p>
+                                                    <p className="-mt-2 text-lg font-bold">{adData?.brand_name}</p>
                                                 </div>
                                             </div>
                                         </SwiperSlide>

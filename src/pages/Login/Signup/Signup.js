@@ -92,9 +92,9 @@ const Signup = () => {
 
 
     return (
-        <div className='my-24 bg-slate-200 w-3/4 mx-auto p-24 rounded-xl'>
+        <div className='my-24 bg-slate-200 w-full md:w-3/4 mx-auto p-16 md:p-24 rounded-xl'>
             <h1 className='text-4xl text-center font-bold'>Sign Up</h1>
-            <form onSubmit={handleSubmit} className='w-3/4 mx-auto'>
+            <form onSubmit={handleSubmit} className='w-full md:w-3/4 mx-auto'>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-base font-semibold">Name:</span>
