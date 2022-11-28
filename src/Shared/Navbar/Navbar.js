@@ -35,10 +35,10 @@ const Navbar = () => {
                         <Link to='/dashboard'>Dashboard</Link>
                         {/* <Link>{user?.email}</Link> */}
                         <Link>{user?.displayName}</Link>
-                        <Link onClick={handleLogout} to='/login'><button className='btn btn-sm btn-error'>LogOut</button></Link>
+                        <Link onClick={handleLogout} to='/login'><button className='btn btn-sm btn-error'>Logout</button></Link>
                     </>
                     :
-                    <Link to='/login'>Login</Link>
+                    <Link to='/login'><button className='btn btn-sm btn-success'>Login</button></Link>
             }
         </li>
     </div>

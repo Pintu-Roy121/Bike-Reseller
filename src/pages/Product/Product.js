@@ -4,6 +4,7 @@ import { FcApproval } from "react-icons/fc";
 import { AuthContext } from '../../contexts/AuthProvider';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
 import Loading from '../../Shared/Loading/Loading';
+import { FcCancel } from "react-icons/fc";
 
 const Product = ({ product, setSelectedProduct }) => {
     // const [isBuyer] = useBuyer(user?.email)
@@ -39,7 +40,15 @@ const Product = ({ product, setSelectedProduct }) => {
                 <div className="card-body">
                     <div className='flex justify-between'>
                         <h2 className="card-title text-2xl font-bold">{model}</h2>
-                        <button onClick={() => handleReport(_id)} className='btn btn-xs btn-outline btn-info'>Report</button>
+                        {
+                            product?.report ?
+                                <div className='flex items-center gap-1'>
+                                    <FcCancel className='text-xl font-bold' />
+                                    <span className='text-base font-bold text-error'>Reported</span>
+                                </div>
+                                :
+                                <button onClick={() => handleReport(_id)} className='btn btn-xs btn-outline btn-info'>Report</button>
+                        }
                     </div>
                     {
                         user_verify ?
