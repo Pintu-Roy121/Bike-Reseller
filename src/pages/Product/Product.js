@@ -7,7 +7,7 @@ import Loading from '../../Shared/Loading/Loading';
 import { FcCancel } from "react-icons/fc";
 
 const Product = ({ product, setSelectedProduct }) => {
-    // const [isBuyer] = useBuyer(user?.email)
+
     const { user } = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = useAdmin(user?.email);
 
@@ -88,14 +88,7 @@ const Product = ({ product, setSelectedProduct }) => {
                                 :
                                 <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">book now</label>
                         }
-                        {/* {
-                                isAdmin ?
-                                    isBuyer && <button onClick={() => handleReport(_id)} className='btn btn-sm btn-outline btn-error'>Report</button>
-                                    :
-                                    <button onClick={() => handleReport(_id)} className='btn btn-sm btn-error'>Delete</button>
-                            }
-                        </div>
-                        <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn btn-primary btn-sm">book now</label> */}
+
                     </div>
                 </div>
             </div>

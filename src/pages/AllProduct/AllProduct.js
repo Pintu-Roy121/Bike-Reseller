@@ -16,7 +16,6 @@ const AllProduct = () => {
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch(`https://bike-resell-shop-server.vercel.app/allproducts`);
-            // const res = await fetch(`https://bike-resell-shop-server.vercel.app/allproducts`);
             const data = await res.json();
             return data;
         }
